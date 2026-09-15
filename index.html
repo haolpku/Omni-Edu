@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OmniEdu · Open Foundation Models for Learning and Teaching</title>
+  <meta name="description" content="OmniEdu is an open family of foundation models for K–12 learning and teaching, with curriculum grounding, problem solving, diagnosis, and pedagogical tutoring.">
+  <meta property="og:title" content="OmniEdu · Open Foundation Models for Learning and Teaching">
+  <meta property="og:description" content="An open education model family spanning curriculum grounding, K–12 problem solving, and pedagogical tutoring.">
+  <meta name="theme-color" content="#10152d">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav wrap">
+      <a class="brand" href="./">Omni<span>Edu</span></a>
+      <div class="nav-links">
+        <a href="#capabilities">Capabilities</a>
+        <a href="#results">Results</a>
+        <a href="#deploy">Deploy</a>
+        <a href="https://github.com/haolpku/Omni-Edu">GitHub ↗</a>
+      </div>
+    </nav>
+    <div class="hero-grid wrap">
+      <div>
+        <div class="eyebrow">OPEN FOUNDATION MODELS · EDUCATIONAL AI</div>
+        <h1>Models that understand<br><em>how learning works.</em></h1>
+        <p class="lead">OmniEdu is an open family of foundation models for K–12 learning and teaching. It connects curriculum grounding, reliable problem solving, learner diagnosis, and pedagogical tutoring in one capability-balanced training framework.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/haolpku/Omni-Edu">View code</a>
+          <a class="button light" href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Get the dataset</a>
+          <a class="button outline" href="OmniEdu.pdf">Read the paper</a>
+        </div>
+        <p class="authors">Hao Liang · Qihan Lin · Linzhuang Sun · Wentao Zhang<br><span>Peking University Zhongguancun Academy</span></p>
+      </div>
+      <div class="hero-card">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="hero-card-inner">
+          <div class="small-label">THE EDUCATIONAL LOOP</div>
+          <div class="loop"><span>Ground</span><b>→</b><span>Solve</span><b>→</b><span>Diagnose</span><b>→</b><span>Tutor</span></div>
+          <div class="loop-note">From “what is the answer?” to “what should this learner do next?”</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats wrap">
+      <div><strong>69,999</strong><span>instruction examples</span></div>
+      <div><strong>15.96M</strong><span>supervised response tokens</span></div>
+      <div><strong>3</strong><span>open model scales</span></div>
+      <div><strong>20</strong><span>pedagogical system instructions</span></div>
+    </section>
+
+    <section id="capabilities" class="section wrap">
+      <div class="section-kicker">01 / CAPABILITIES</div>
+      <h2>One family for the full learning–teaching loop.</h2>
+      <div class="cap-grid">
+        <article><div class="cap-num">01</div><h3>Curriculum grounding</h3><p>Map a question to knowledge points, grade levels, prerequisite relations, and curriculum evidence.</p></article>
+        <article><div class="cap-num">02</div><h3>K–12 problem solving</h3><p>Solve authentic school-level questions across subjects, formats, and multimodal inputs.</p></article>
+        <article><div class="cap-num">03</div><h3>Diagnostic reasoning</h3><p>Identify misconceptions, missing prerequisites, and knowledge-state gaps from learner work.</p></article>
+        <article><div class="cap-num">04</div><h3>Pedagogical tutoring</h3><p>Choose the next instructional action: a hint, question, prerequisite review, or explanation.</p></article>
+      </div>
+    </section>
+
+    <section id="results" class="section tinted">
+      <div class="wrap">
+        <div class="section-kicker">02 / RESULTS</div>
+        <div class="results-head"><h2>Strong across education benchmarks.</h2><p>OmniEdu-27B is among the strongest evaluated open-weight educational models while remaining competitive with much larger proprietary systems.</p></div>
+        <div class="result-grid">
+          <div class="result-card"><span>K12-Bench</span><strong>63.12 EM</strong><small>76.69 F1 · curriculum structure</small></div>
+          <div class="result-card"><span>MathFish</span><strong>85.89</strong><small>problem–standard alignment</small></div>
+          <div class="result-card"><span>EDUMATH</span><strong>86.95</strong><small>curriculum-conditioned generation</small></div>
+          <div class="result-card"><span>GAOKAO-Bench</span><strong>94.87</strong><small>authentic exam problem solving</small></div>
+          <div class="result-card"><span>MathTutorBench</span><strong>78.74%</strong><small>Scaffold win rate</small></div>
+          <div class="result-card"><span>LongTutor</span><strong>3.02</strong><small>Teaching average · 78.20 Evidence</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deploy" class="section wrap">
+      <div class="section-kicker">03 / DEPLOYMENT</div>
+      <div class="deploy-grid">
+        <div><h2>Deploy in minutes.</h2><p>Serve a released checkpoint locally with Transformers or expose an OpenAI-compatible endpoint through vLLM. The examples below use the 27B configuration; reduce tensor parallelism for smaller variants.</p></div>
+        <pre><code>pip install -U vllm
+
+vllm serve /path/to/OmniEdu-27B \\
+  --served-model-name omniedu-27b \\
+  --dtype bfloat16 \\
+  --tensor-parallel-size 4 \\
+  --max-model-len 32768</code></pre>
+      </div>
+      <div class="deploy-links"><a href="https://github.com/haolpku/Omni-Edu#quick-start">Transformers example ↗</a><a href="https://github.com/haolpku/Omni-Edu#dataset">Dataset loading ↗</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Hugging Face dataset ↗</a></div>
+    </section>
+
+    <section class="section tinted compact">
+      <div class="wrap quote"><div class="quote-mark">“</div><p>An educational model must coordinate <b>what to teach</b>, <b>where the learner is</b>, and <b>how to respond</b>.</p><span>— OmniEdu design principle</span></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><div><strong>OmniEdu</strong><span>Open Foundation Models for Learning and Teaching</span></div><div class="footer-links"><a href="https://github.com/haolpku/Omni-Edu">GitHub</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Dataset</a><a href="OmniEdu.pdf">Paper PDF</a></div></div></footer>
+</body>
+</html>
