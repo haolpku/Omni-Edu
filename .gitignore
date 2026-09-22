@@ -8,3 +8,12 @@
 *.toc
 *.synctex.gz
 main.pdf
+
+# Manuscript sources and bundles stay local. Link to arXiv instead.
+*.tex
+*.bib
+*.cls
+*.sty
+*.bst
+*.zip
+OmniEdu.pdf

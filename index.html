@@ -8,6 +8,7 @@
   <meta property="og:title" content="OmniEdu · Open Foundation Models for Learning and Teaching">
   <meta property="og:description" content="An open education model family spanning curriculum grounding, K–12 problem solving, and pedagogical tutoring.">
   <meta name="theme-color" content="#10152d">
+  <link rel="canonical" href="https://haolpku.github.io/Omni-Edu/">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,6 +16,7 @@
     <nav class="nav wrap">
       <a class="brand" href="./">Omni<span>Edu</span></a>
       <div class="nav-links">
+        <a href="#models">Models</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#results">Results</a>
         <a href="#deploy">Deploy</a>
@@ -23,15 +25,15 @@
     </nav>
     <div class="hero-grid wrap">
       <div>
-        <div class="eyebrow">OPEN FOUNDATION MODELS · EDUCATIONAL AI</div>
-        <h1>Models that understand<br><em>how learning works.</em></h1>
-        <p class="lead">OmniEdu is an open family of foundation models for K–12 learning and teaching. It connects curriculum grounding, reliable problem solving, learner diagnosis, and pedagogical tutoring in one capability-balanced training framework.</p>
+        <div class="eyebrow">ARXIV 2609.23088 · SEPTEMBER 2026</div>
+        <h1>Know the curriculum.<br><em>Teach the next step.</em></h1>
+        <p class="lead">OmniEdu: Open Foundation Models for Learning and Teaching. Three released multimodal models—4B, 9B, and 27B—connect curriculum knowledge, problem solving, learner diagnosis, and instructional support.</p>
         <div class="actions">
-          <a class="button primary" href="https://github.com/haolpku/Omni-Edu">View code</a>
+          <a class="button primary" href="#models">Get the models</a>
           <a class="button light" href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Get the dataset</a>
-          <a class="button outline" href="OmniEdu.pdf">Read the paper</a>
+          <a class="button outline" href="https://arxiv.org/abs/2609.23088">Read the paper</a>
         </div>
-        <p class="authors">Hao Liang · Qihan Lin · Linzhuang Sun · Wentao Zhang<br><span>Peking University Zhongguancun Academy</span></p>
+        <p class="authors"><span class="author">Hao Liang</span> · <span class="author">Qihan Lin</span> · <span class="author">Meiyi Qiang</span> · <span class="author">Linzhuang Sun</span> · <span class="author">Hengyi Feng</span> · <span class="author">Mingrui Chen</span> · <span class="author">Sizhe Qiu</span> · <span class="author">Wentao Zhang</span><br><span>Peking University · University of the Chinese Academy of Sciences · Zhongguancun Academy</span></p>
       </div>
       <div class="hero-card">
         <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
@@ -49,11 +51,23 @@
       <div><strong>69,999</strong><span>instruction examples</span></div>
       <div><strong>15.96M</strong><span>supervised response tokens</span></div>
       <div><strong>3</strong><span>open model scales</span></div>
-      <div><strong>20</strong><span>pedagogical system instructions</span></div>
+      <div><strong>20</strong><span>task-specific system instructions</span></div>
+    </section>
+
+    <section id="models" class="section wrap">
+      <div class="section-kicker">01 / OPEN MODEL FAMILY</div>
+      <h2>Choose your scale.<br>Start building.</h2>
+      <p class="section-intro">Download the weights, explore the training data, and run OmniEdu with Transformers or vLLM. All three scales use a 32,768-token training sequence length.</p>
+      <div class="model-grid">
+        <article class="model-card"><span class="model-scale">4B</span><h3>OmniEdu-4B</h3><p>Our smallest checkpoint for local experimentation.</p><a href="https://huggingface.co/lhpku20010120/Omni-Edu-4B">Download checkpoint ↗</a></article>
+        <article class="model-card"><span class="model-scale">9B</span><h3>OmniEdu-9B</h3><p>The middle scale for education applications.</p><a href="https://huggingface.co/lhpku20010120/Omni-Edu-9B">Download checkpoint ↗</a></article>
+        <article class="model-card"><span class="model-scale">27B</span><h3>OmniEdu-27B</h3><p>Our strongest overall results across the education evaluations.</p><a href="https://huggingface.co/lhpku20010120/Omni-Edu-27B">Download checkpoint ↗</a></article>
+      </div>
+      <p class="data-note">Trained on <b>60,951 education-specific</b> and <b>9,048 general-purpose</b> examples from more than 100 sources. <a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Explore the dataset ↗</a></p>
     </section>
 
     <section id="capabilities" class="section wrap">
-      <div class="section-kicker">01 / CAPABILITIES</div>
+      <div class="section-kicker">02 / CAPABILITIES</div>
       <h2>One family for the full learning–teaching loop.</h2>
       <div class="cap-grid">
         <article><div class="cap-num">01</div><h3>Curriculum grounding</h3><p>Map a question to knowledge points, grade levels, prerequisite relations, and curriculum evidence.</p></article>
@@ -65,38 +79,395 @@
 
     <section id="results" class="section tinted">
       <div class="wrap">
-        <div class="section-kicker">02 / RESULTS</div>
-        <div class="results-head"><h2>Strong across education benchmarks.</h2><p>OmniEdu-27B is among the strongest evaluated open-weight educational models while remaining competitive with much larger proprietary systems.</p></div>
+        <div class="section-kicker">03 / EVALUATION</div>
+        <div class="results-head"><h2>Leading curriculum grounding.<br>Stronger instructional support.</h2><p>Among the 16 models evaluated in the paper, OmniEdu-27B leads K12-Bench EM/F1, MathFish accuracy, and LongTutor's teaching score. Explore the full comparison with open-weight and proprietary models below.</p></div>
         <div class="result-grid">
-          <div class="result-card"><span>K12-Bench</span><strong>63.12 EM</strong><small>76.69 F1 · curriculum structure</small></div>
-          <div class="result-card"><span>MathFish</span><strong>85.89</strong><small>problem–standard alignment</small></div>
-          <div class="result-card"><span>EDUMATH</span><strong>86.95</strong><small>curriculum-conditioned generation</small></div>
-          <div class="result-card"><span>GAOKAO-Bench</span><strong>94.87</strong><small>authentic exam problem solving</small></div>
-          <div class="result-card"><span>MathTutorBench</span><strong>78.74%</strong><small>Scaffold win rate</small></div>
-          <div class="result-card"><span>LongTutor</span><strong>3.02</strong><small>Teaching average · 78.20 Evidence</small></div>
+          <div class="result-card"><span>K12-Bench · OmniEdu-27B</span><strong>63.12% EM</strong><small>76.69% F1 · best on both metrics</small></div>
+          <div class="result-card"><span>MathFish · OmniEdu-27B</span><strong>85.89%</strong><small>Best accuracy among evaluated models</small></div>
+          <div class="result-card"><span>LongTutor · OmniEdu-27B</span><strong>3.02</strong><small>Best teaching score · original scale</small></div>
         </div>
+        <div class="comparison-head"><h3>All models. All three education evaluations.</h3><p>Higher is better. Per-column top three: <span class="rank-1">1st</span> · <span class="rank-2">2nd</span> · <span class="rank-3">3rd</span>. Shaded rows identify OmniEdu.</p></div>
+        <details class="benchmark" open><summary>Curriculum grounding<span>16 models · Table 1</span></summary>
+<div class="table-scroll" role="region" aria-label="Curriculum grounding results" tabindex="0"><table data-paper-table="S4.T1"><caption>Curriculum grounding · <a href="https://arxiv.org/html/2609.23088v1#S4.T1">Paper table ↗</a></caption><thead><tr>
+<th scope="col">Model</th>
+<th scope="col">Size</th>
+<th scope="col">K12-Bench EM</th>
+<th scope="col">K12-Bench F1</th>
+<th scope="col">MathFish Acc.</th>
+<th scope="col">EDUMATH MaC</th>
+</tr></thead><tbody>
+<tr class="group-row"><th colspan="6" scope="rowgroup">Open-weight Models</th></tr>
+<tr><th scope="row">Qwen3.5-4B-Base</th><td>4B</td>
+<td>42.72%</td>
+<td>69.20%</td>
+<td>80.33%</td>
+<td>47.60%</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-4B (ours)</th><td>4B</td>
+<td>54.25%</td>
+<td>71.75%</td>
+<td>83.19%</td>
+<td>68.40%</td>
+</tr>
+<tr><th scope="row">Qwen3.5-9B-Base</th><td>9B</td>
+<td>48.52%</td>
+<td>71.99%</td>
+<td>79.66%</td>
+<td>58.60%</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-9B (ours)</th><td>9B</td>
+<td><span class="rank-2" title="Rank 2" aria-label="55.46%, rank 2">55.46%</span></td>
+<td><span class="rank-3" title="Rank 3" aria-label="73.68%, rank 3">73.68%</span></td>
+<td>83.70%</td>
+<td>74.00%</td>
+</tr>
+<tr><th scope="row">Qwen3.8-27B</th><td>27B</td>
+<td>52.11%</td>
+<td>73.48%</td>
+<td>83.54%</td>
+<td>70.60%</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-27B (ours)</th><td>27B</td>
+<td><span class="rank-1" title="Rank 1" aria-label="63.12%, rank 1">63.12%</span></td>
+<td><span class="rank-1" title="Rank 1" aria-label="76.69%, rank 1">76.69%</span></td>
+<td><span class="rank-1" title="Rank 1" aria-label="85.89%, rank 1">85.89%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="86.95%, rank 2">86.95%</span></td>
+</tr>
+<tr><th scope="row">Confucius3-Math</th><td>14B</td>
+<td>5.23%</td>
+<td>19.23%</td>
+<td>0.00%</td>
+<td>3.00%</td>
+</tr>
+<tr><th scope="row">MuduoLLM</th><td>14B</td>
+<td>48.24%</td>
+<td>70.46%</td>
+<td>82.85%</td>
+<td>57.20%</td>
+</tr>
+<tr><th scope="row">EduChat-SFT-Qwen2.5-7B</th><td>7B</td>
+<td>45.20%</td>
+<td>67.58%</td>
+<td>78.23%</td>
+<td>28.00%</td>
+</tr>
+<tr><th scope="row">EduChat-R1-Qwen3-8B</th><td>8B</td>
+<td>25.25%</td>
+<td>49.67%</td>
+<td>19.49%</td>
+<td>47.00%</td>
+</tr>
+<tr><th scope="row">EduChat-R1-Qwen3-32B</th><td>32B</td>
+<td>49.42%</td>
+<td>71.21%</td>
+<td>83.71%</td>
+<td>61.20%</td>
+</tr>
+<tr class="group-row"><th colspan="6" scope="rowgroup">Proprietary Models</th></tr>
+<tr><th scope="row">GPT-5.4</th><td>–</td>
+<td>43.23%</td>
+<td>67.80%</td>
+<td>80.65%</td>
+<td>80.50%</td>
+</tr>
+<tr><th scope="row">GPT-5.6-Sol</th><td>–</td>
+<td>48.63%</td>
+<td>71.03%</td>
+<td>83.68%</td>
+<td><span class="rank-3" title="Rank 3" aria-label="84.92%, rank 3">84.92%</span></td>
+</tr>
+<tr><th scope="row">Claude-Opus-5</th><td>–</td>
+<td>48.48%</td>
+<td>71.34%</td>
+<td>83.52%</td>
+<td>75.00%</td>
+</tr>
+<tr><th scope="row">GLM-5.3</th><td>–</td>
+<td>43.38%</td>
+<td>57.66%</td>
+<td><span class="rank-3" title="Rank 3" aria-label="85.23%, rank 3">85.23%</span></td>
+<td>62.78%</td>
+</tr>
+<tr><th scope="row">Kimi-K3</th><td>–</td>
+<td><span class="rank-3" title="Rank 3" aria-label="55.03%, rank 3">55.03%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="74.71%, rank 2">74.71%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="85.40%, rank 2">85.40%</span></td>
+<td><span class="rank-1" title="Rank 1" aria-label="90.00%, rank 1">90.00%</span></td>
+</tr>
+</tbody></table></div>
+</details>
+        <details class="benchmark"><summary>K–12 problem solving<span>16 models · Table 2</span></summary>
+<div class="table-scroll" role="region" aria-label="K–12 problem solving results" tabindex="0"><table data-paper-table="S4.T2"><caption>K–12 problem solving · <a href="https://arxiv.org/html/2609.23088v1#S4.T2">Paper table ↗</a></caption><thead><tr>
+<th scope="col">Model</th>
+<th scope="col">Size</th>
+<th scope="col">GAOKAO-Bench Full</th>
+<th scope="col">EXAMS-V Overall</th>
+<th scope="col">MDK12-Bench Full</th>
+</tr></thead><tbody>
+<tr class="group-row"><th colspan="5" scope="rowgroup">Open-weight Models</th></tr>
+<tr><th scope="row">Qwen3.5-4B-Base</th><td>4B</td>
+<td>88.98%</td>
+<td>44.69%</td>
+<td>35.43%</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-4B (ours)</th><td>4B</td>
+<td>90.46%</td>
+<td>57.62%</td>
+<td>46.36%</td>
+</tr>
+<tr><th scope="row">Qwen3.5-9B-Base</th><td>9B</td>
+<td>92.94%</td>
+<td>63.00%</td>
+<td>44.50%</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-9B (ours)</th><td>9B</td>
+<td>93.66%</td>
+<td>66.40%</td>
+<td>50.80%</td>
+</tr>
+<tr><th scope="row">Qwen3.8-27B</th><td>27B</td>
+<td>91.55%</td>
+<td><span class="rank-3" title="Rank 3" aria-label="68.65%, rank 3">68.65%</span></td>
+<td>46.04%</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-27B (ours)</th><td>27B</td>
+<td><span class="rank-3" title="Rank 3" aria-label="94.87%, rank 3">94.87%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="69.52%, rank 2">69.52%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="57.76%, rank 2">57.76%</span></td>
+</tr>
+<tr><th scope="row">Confucius3-Math</th><td>14B</td>
+<td>84.51%</td>
+<td>21.95%</td>
+<td>39.13%</td>
+</tr>
+<tr><th scope="row">MuduoLLM</th><td>14B</td>
+<td>89.66%</td>
+<td>21.95%</td>
+<td>45.44%</td>
+</tr>
+<tr><th scope="row">EduChat-SFT-Qwen2.5-7B</th><td>7B</td>
+<td>70.75%</td>
+<td>21.95%</td>
+<td>32.50%</td>
+</tr>
+<tr><th scope="row">EduChat-R1-Qwen3-8B</th><td>8B</td>
+<td>76.08%</td>
+<td>0.69%</td>
+<td>41.29%</td>
+</tr>
+<tr><th scope="row">EduChat-R1-Qwen3-32B</th><td>32B</td>
+<td>83.86%</td>
+<td>21.95%</td>
+<td>41.84%</td>
+</tr>
+<tr class="group-row"><th colspan="5" scope="rowgroup">Proprietary Models</th></tr>
+<tr><th scope="row">GPT-5.4</th><td>–</td>
+<td>93.44%</td>
+<td>35.66%</td>
+<td>54.77%</td>
+</tr>
+<tr><th scope="row">GPT-5.6-Sol</th><td>–</td>
+<td><span class="rank-2" title="Rank 2" aria-label="95.96%, rank 2">95.96%</span></td>
+<td>24.82%</td>
+<td>54.67%</td>
+</tr>
+<tr><th scope="row">Claude-Opus-5</th><td>–</td>
+<td><span class="rank-1" title="Rank 1" aria-label="97.22%, rank 1">97.22%</span></td>
+<td>64.34%</td>
+<td><span class="rank-3" title="Rank 3" aria-label="57.46%, rank 3">57.46%</span></td>
+</tr>
+<tr><th scope="row">GLM-5.3</th><td>–</td>
+<td>89.76%</td>
+<td>22.29%</td>
+<td>55.33%</td>
+</tr>
+<tr><th scope="row">Kimi-K3</th><td>–</td>
+<td>94.86%</td>
+<td><span class="rank-1" title="Rank 1" aria-label="87.29%, rank 1">87.29%</span></td>
+<td><span class="rank-1" title="Rank 1" aria-label="63.60%, rank 1">63.60%</span></td>
+</tr>
+</tbody></table></div>
+</details>
+        <details class="benchmark"><summary>Pedagogical tutoring<span>16 models · Table 3</span></summary>
+<div class="table-scroll" role="region" aria-label="Pedagogical tutoring results" tabindex="0"><table data-paper-table="S4.T3"><caption>Pedagogical tutoring · <a href="https://arxiv.org/html/2609.23088v1#S4.T3">Paper table ↗</a></caption><thead><tr>
+<th scope="col">Model</th>
+<th scope="col">Size</th>
+<th scope="col">MathTutor-S</th>
+<th scope="col">MathTutor-SH</th>
+<th scope="col">TutorBench</th>
+<th scope="col">LongTutor-E</th>
+<th scope="col">LongTutor-T</th>
+</tr></thead><tbody>
+<tr class="group-row"><th colspan="7" scope="rowgroup">Open-weight Models</th></tr>
+<tr><th scope="row">Qwen3.5-4B-Base</th><td>4B</td>
+<td>20.42%</td>
+<td>18.36%</td>
+<td>45.52%</td>
+<td>25.67%</td>
+<td>1.60</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-4B (ours)</th><td>4B</td>
+<td>75.79%</td>
+<td><span class="rank-1" title="Rank 1" aria-label="84.77%, rank 1">84.77%</span></td>
+<td>46.67%</td>
+<td>65.88%</td>
+<td>2.29</td>
+</tr>
+<tr><th scope="row">Qwen3.5-9B-Base</th><td>9B</td>
+<td>14.00%</td>
+<td>13.67%</td>
+<td>45.38%</td>
+<td>5.81%</td>
+<td>1.48</td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-9B (ours)</th><td>9B</td>
+<td>75.26%</td>
+<td>81.64%</td>
+<td>48.16%</td>
+<td>66.63%</td>
+<td>2.66</td>
+</tr>
+<tr><th scope="row">Qwen3.8-27B</th><td>27B</td>
+<td>57.16%</td>
+<td>55.86%</td>
+<td><span class="rank-3" title="Rank 3" aria-label="58.58%, rank 3">58.58%</span></td>
+<td>36.80%</td>
+<td><span class="rank-2" title="Rank 2" aria-label="2.74, rank 2">2.74</span></td>
+</tr>
+<tr class="ours"><th scope="row">OmniEdu-27B (ours)</th><td>27B</td>
+<td><span class="rank-2" title="Rank 2" aria-label="78.74%, rank 2">78.74%</span></td>
+<td><span class="rank-3" title="Rank 3" aria-label="83.59%, rank 3">83.59%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="59.42%, rank 2">59.42%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="78.20%, rank 2">78.20%</span></td>
+<td><span class="rank-1" title="Rank 1" aria-label="3.02, rank 1">3.02</span></td>
+</tr>
+<tr><th scope="row">Confucius3-Math</th><td>14B</td>
+<td>27.68%</td>
+<td>20.70%</td>
+<td>34.72%</td>
+<td>23.07%</td>
+<td>1.36</td>
+</tr>
+<tr><th scope="row">MuduoLLM</th><td>14B</td>
+<td>30.42%</td>
+<td>23.44%</td>
+<td>35.98%</td>
+<td>24.31%</td>
+<td>1.28</td>
+</tr>
+<tr><th scope="row">EduChat-SFT-Qwen2.5-7B</th><td>7B</td>
+<td>18.21%</td>
+<td>22.66%</td>
+<td>21.48%</td>
+<td>26.55%</td>
+<td>1.21</td>
+</tr>
+<tr><th scope="row">EduChat-R1-Qwen3-8B</th><td>8B</td>
+<td>11.58%</td>
+<td>7.42%</td>
+<td>23.71%</td>
+<td>33.75%</td>
+<td>1.14</td>
+</tr>
+<tr><th scope="row">EduChat-R1-Qwen3-32B</th><td>32B</td>
+<td>22.21%</td>
+<td>16.80%</td>
+<td>25.92%</td>
+<td>52.03%</td>
+<td>1.56</td>
+</tr>
+<tr class="group-row"><th colspan="7" scope="rowgroup">Proprietary Models</th></tr>
+<tr><th scope="row">GPT-5.4</th><td>–</td>
+<td>6.32%</td>
+<td>1.96%</td>
+<td>46.34%</td>
+<td>75.50%</td>
+<td>1.62</td>
+</tr>
+<tr><th scope="row">GPT-5.6-Sol</th><td>–</td>
+<td>10.53%</td>
+<td>17.65%</td>
+<td>50.97%</td>
+<td><span class="rank-3" title="Rank 3" aria-label="77.50%, rank 3">77.50%</span></td>
+<td>1.89</td>
+</tr>
+<tr><th scope="row">Claude-Opus-5</th><td>–</td>
+<td><span class="rank-1" title="Rank 1" aria-label="87.89%, rank 1">87.89%</span></td>
+<td><span class="rank-2" title="Rank 2" aria-label="84.31%, rank 2">84.31%</span></td>
+<td>54.01%</td>
+<td><span class="rank-1" title="Rank 1" aria-label="84.17%, rank 1">84.17%</span></td>
+<td><span class="rank-3" title="Rank 3" aria-label="2.72, rank 3">2.72</span></td>
+</tr>
+<tr><th scope="row">GLM-5.3</th><td>–</td>
+<td><span class="rank-3" title="Rank 3" aria-label="77.89%, rank 3">77.89%</span></td>
+<td>76.92%</td>
+<td>38.62%</td>
+<td>77.42%</td>
+<td>2.66</td>
+</tr>
+<tr><th scope="row">Kimi-K3</th><td>–</td>
+<td>20.00%</td>
+<td>15.38%</td>
+<td><span class="rank-1" title="Rank 1" aria-label="63.65%, rank 1">63.65%</span></td>
+<td>74.73%</td>
+<td>2.17</td>
+</tr>
+</tbody></table></div>
+</details>
+        <p class="table-note">Scores reproduce arXiv v1 (Tables 1–3); higher is better. Values are percentages except LongTutor-T, which uses the original teaching-score scale. MathTutor-S / SH denote Scaffold / Scaffold-hard win rates; LongTutor-E / T denote Evidence / Teaching averages. The five education-specific baselines and GLM-5.3 receive text-only inputs on image-dependent examples, as described in the paper. Rankings apply to the evaluation protocol reported in the paper. <a href="https://arxiv.org/html/2609.23088v1#S4">Evaluation protocol ↗</a></p>
+        <div class="general-head"><h3>General capabilities remain strong.</h3><p>All three sizes improve on the selected metrics below after educational fine-tuning. Individual submetrics can be flat or decline; the appendix reports the full breakdown.</p></div>
+        <div class="table-scroll general-table" role="region" aria-label="General capability results" tabindex="0"><table data-paper-table="general"><caption>General capabilities · <a href="https://arxiv.org/html/2609.23088v1#S6">Detailed results ↗</a></caption><thead><tr><th scope="col">Model</th><th scope="col">IFEval Prompt Strict</th><th scope="col">GPQA Diamond</th><th scope="col">MMMU-Pro Overall</th></tr></thead><tbody>
+<tr><th scope="row">Qwen3.5-4B-Base</th><td>64.88%</td><td>58.08%</td><td>50.46%</td></tr>
+<tr class="ours"><th scope="row">OmniEdu-4B (ours)</th><td>65.06%</td><td>60.61%</td><td>52.60%</td></tr>
+<tr><th scope="row">Qwen3.5-9B-Base</th><td>69.69%</td><td>62.12%</td><td>58.38%</td></tr>
+<tr class="ours"><th scope="row">OmniEdu-9B (ours)</th><td>73.01%</td><td>63.64%</td><td>60.75%</td></tr>
+<tr><th scope="row">Qwen3.8-27B</th><td>80.59%</td><td>74.24%</td><td>64.97%</td></tr>
+<tr class="ours"><th scope="row">OmniEdu-27B (ours)</th><td>82.07%</td><td>77.78%</td><td>67.98%</td></tr>
+</tbody></table></div>
+        <p class="table-note">IFEval: prompt-level strict accuracy. GPQA: Diamond accuracy. MMMU-Pro: overall accuracy. Values are percentages; sources: Tables 13–15 of arXiv v1.</p>
       </div>
     </section>
 
     <section id="deploy" class="section wrap">
-      <div class="section-kicker">03 / DEPLOYMENT</div>
+      <div class="section-kicker">04 / DEPLOYMENT</div>
       <div class="deploy-grid">
-        <div><h2>Deploy in minutes.</h2><p>Serve a released checkpoint locally with Transformers or expose an OpenAI-compatible endpoint through vLLM. The examples below use the 27B configuration; reduce tensor parallelism for smaller variants.</p></div>
+        <div><h2>From checkpoint<br>to your application.</h2><p>Start with OmniEdu-4B and serve an OpenAI-compatible endpoint using a recent vLLM release with Qwen3.5 support. Thinking is disabled to match the training template.</p><p>For 9B or 27B, change the model ID and adjust GPU parallelism. Memory needs depend on context length, concurrency, and image inputs.</p></div>
         <pre><code>pip install -U vllm
 
-vllm serve /path/to/OmniEdu-27B \\
-  --served-model-name omniedu-27b \\
-  --dtype bfloat16 \\
-  --tensor-parallel-size 4 \\
-  --max-model-len 32768</code></pre>
+vllm serve lhpku20010120/Omni-Edu-4B \
+  --served-model-name omniedu \
+  --dtype bfloat16 \
+  --tensor-parallel-size 1 \
+  --max-model-len 32768 \
+  --reasoning-parser qwen3 \
+  --default-chat-template-kwargs &#x27;{&quot;enable_thinking&quot;: false}&#x27;</code></pre>
       </div>
-      <div class="deploy-links"><a href="https://github.com/haolpku/Omni-Edu#quick-start">Transformers example ↗</a><a href="https://github.com/haolpku/Omni-Edu#dataset">Dataset loading ↗</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Hugging Face dataset ↗</a></div>
+      <div class="deploy-links"><a href="https://github.com/haolpku/Omni-Edu#quick-start">Transformers &amp; API examples ↗</a><a href="https://github.com/haolpku/Omni-Edu#dataset">Load the training data ↗</a><a href="https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html">vLLM setup guide ↗</a></div>
+    </section>
+
+    <section id="citation" class="section tinted compact">
+      <div class="wrap">
+        <div class="section-kicker">05 / THE PAPER</div>
+        <h2>OmniEdu: Open Foundation Models<br>for Learning and Teaching</h2>
+        <p class="section-intro">Hao Liang · Qihan Lin · Meiyi Qiang · Linzhuang Sun · Hengyi Feng · Mingrui Chen · Sizhe Qiu · Wentao Zhang<br>arXiv:2609.23088 · September 19, 2026</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2609.23088">Read on arXiv ↗</a><a href="https://arxiv.org/pdf/2609.23088">Download PDF ↗</a></div>
+        <details class="citation"><summary>Cite OmniEdu · BibTeX</summary><pre><code>@misc{liang2026omniedu,
+  title         = {OmniEdu: Open Foundation Models for Learning and Teaching},
+  author        = {Hao Liang and Qihan Lin and Meiyi Qiang and Linzhuang Sun and Hengyi Feng and Mingrui Chen and Sizhe Qiu and Wentao Zhang},
+  year          = {2026},
+  eprint        = {2609.23088},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2609.23088}
+}</code></pre></details>
+        <p class="table-note">OmniEdu supports educational research and teacher-assistance tools. Benchmark results do not establish classroom learning gains; educators should review model outputs before consequential use.</p>
+      </div>
     </section>
 
     <section class="section tinted compact">
       <div class="wrap quote"><div class="quote-mark">“</div><p>An educational model must coordinate <b>what to teach</b>, <b>where the learner is</b>, and <b>how to respond</b>.</p><span>— OmniEdu design principle</span></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><div><strong>OmniEdu</strong><span>Open Foundation Models for Learning and Teaching</span></div><div class="footer-links"><a href="https://github.com/haolpku/Omni-Edu">GitHub</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Dataset</a><a href="OmniEdu.pdf">Paper PDF</a></div></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><div><strong>OmniEdu</strong><span>Open Foundation Models for Learning and Teaching</span></div><div class="footer-links"><a href="https://github.com/haolpku/Omni-Edu">GitHub</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Dataset</a><a href="https://arxiv.org/abs/2609.23088">Paper</a></div></div></footer>
 </body>
 </html>
