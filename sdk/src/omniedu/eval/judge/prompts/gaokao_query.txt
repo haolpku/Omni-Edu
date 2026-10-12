@@ -1,0 +1,5 @@
+【题目】{question}
+【分析过程】{reference_solution}
+【标准答案】{reference_answer}
+【分值】{score}
+【学生分析与答案】{model_response}

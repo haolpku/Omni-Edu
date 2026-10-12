@@ -95,9 +95,7 @@ def test_images_are_sent_as_content_parts(endpoint: str) -> None:
 
 def test_batch_against_the_endpoint(endpoint: str, tmp_path) -> None:
     out = tmp_path / "preds.jsonl"
-    model = OmniEdu.from_pretrained(
-        "4B", base_url=endpoint, served_model="m", concurrency=2
-    )
+    model = OmniEdu.from_pretrained("4B", base_url=endpoint, served_model="m", concurrency=2)
     try:
         summary = model.batch([{"id": "1", "text": "a"}, {"id": "2", "text": "b"}], out=out)
     finally:
@@ -108,3 +106,37 @@ def test_batch_against_the_endpoint(endpoint: str, tmp_path) -> None:
     assert {line["id"] for line in lines} == {"1", "2"}
     assert all(line["response"] == "42" for line in lines)
 
+
+def test_short_alias_sends_the_name_omniedu_serve_prints(endpoint: str) -> None:
+    """The README's `omniedu serve --model 4B` prints `--served-model-name
+    omniedu-4b`; the README's `from_pretrained("4B", base_url=...)` must send
+    exactly that name, or the two examples cannot talk to each other."""
+    model = OmniEdu.from_pretrained("4B", base_url=endpoint)
+    try:
+        model.chat(text="hi")
+    finally:
+        model.close()
+
+    assert _Handler.received[-1][1]["model"] == "omniedu-4b"
+
+
+def test_served_model_overrides_the_derived_name(endpoint: str) -> None:
+    model = OmniEdu.from_pretrained("27B", base_url=endpoint, served_model="my-server")
+    try:
+        model.chat(text="hi")
+    finally:
+        model.close()
+
+    assert _Handler.received[-1][1]["model"] == "my-server"
+
+
+def test_full_hub_id_is_sent_unchanged(endpoint: str) -> None:
+    """A server started without `--served-model-name` answers to the Hub id, so an
+    explicit id must not be rewritten into `omniedu-...`."""
+    model = OmniEdu.from_pretrained("OpenDCAI/Omni-Edu-9B", base_url=endpoint)
+    try:
+        model.chat(text="hi")
+    finally:
+        model.close()
+
+    assert _Handler.received[-1][1]["model"] == "OpenDCAI/Omni-Edu-9B"

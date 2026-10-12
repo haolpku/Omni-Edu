@@ -36,4 +36,3 @@ def build_backend(model: str, kind: str = "auto", **kwargs: Any) -> Backend:
 
 
 __all__ = ["Backend", "Generation", "OpenAIBackend", "api_base", "build_backend"]
-

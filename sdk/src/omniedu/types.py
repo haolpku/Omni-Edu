@@ -62,4 +62,3 @@ class ChatResponse:
             "latency_ms": round(self.latency_ms, 3),
             "finish_reason": self.finish_reason,
         }
-

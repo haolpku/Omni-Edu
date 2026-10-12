@@ -17,7 +17,7 @@ from .io import (
     iter_jsonl,
     normalise_request,
 )
-from .presets import DEFAULT_GENERATION, resolve_model
+from .presets import DEFAULT_GENERATION, is_alias, resolve_model, served_name
 from .tasks import get_task
 from .types import ChatResponse, GenerationParams
 
@@ -98,12 +98,17 @@ class OmniEdu:
 
         With ``base_url`` the toolkit talks to a running vLLM / OpenAI-compatible
         server; without it, it loads the weights locally (needs the
-        ``omniedu[transformers]`` extra). ``served_model`` overrides the name sent
-        in requests, which is useful when vLLM was started with
-        ``--served-model-name``.
+        ``omniedu[transformers]`` extra).
+
+        A short alias (``"4B"`` / ``"9B"`` / ``"27B"``) against a ``base_url``
+        sends the *served* name -- ``"omniedu-27b"`` -- because that is what
+        ``omniedu serve`` passes to ``--served-model-name``.  ``served_model``
+        overrides it; a full Hub id or a local path is sent unchanged.
         """
         resolved = resolve_model(model)
-        request_model = served_model or resolved
+        request_model = served_model or (
+            served_name(model) if base_url and is_alias(model) else resolved
+        )
         instance_backend = build_backend(
             request_model, backend, base_url=base_url, api_key=api_key, **backend_kwargs
         )
@@ -136,7 +141,9 @@ class OmniEdu:
             # The local processor wants PIL images, not URL references.
             def content(value: str) -> Any:
                 return media.to_transformers_content(value, urls)
+
         else:
+
             def content(value: str) -> Any:
                 return media.build_user_content(value, urls)
 
@@ -229,9 +236,7 @@ class OmniEdu:
 
         requests: list[Request] = []
         for index, row in enumerate(rows):
-            requests.append(
-                normalise_request(row, index=index, task=task, system=system)
-            )
+            requests.append(normalise_request(row, index=index, task=task, system=system))
         if limit is not None:
             requests = requests[:limit]
 
@@ -246,9 +251,7 @@ class OmniEdu:
                         done.add(str(record.get("id")))
                 compact_jsonl(out_path, key="id", keep=done)
 
-        params = self.params.merged(
-            max_new_tokens=max_new_tokens, temperature=temperature
-        )
+        params = self.params.merged(max_new_tokens=max_new_tokens, temperature=temperature)
         workers = concurrency or self.concurrency
         lock = asyncio.Lock()
         stats = {"ok": 0, "error": 0, "skipped": 0}
@@ -290,7 +293,10 @@ class OmniEdu:
                 if progress is not None:
                     progress(finished, total)
                 elif finished % 50 == 0:
-                    print(f"[omniedu] {finished}/{total} ok={stats['ok']} error={stats['error']}", flush=True)
+                    print(
+                        f"[omniedu] {finished}/{total} ok={stats['ok']} error={stats['error']}",
+                        flush=True,
+                    )
 
         semaphore = asyncio.Semaphore(workers)
 

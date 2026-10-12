@@ -37,3 +37,37 @@ def resolve_model(name: str) -> str:
 def known_presets() -> dict[str, str]:
     return dict(PRESETS)
 
+
+def served_name(name: str) -> str:
+    """The name a served preset answers to, i.e. what ``omniedu serve`` passes to
+    vLLM's ``--served-model-name``.
+
+    ``"27B"`` and ``"OpenDCAI/Omni-Edu-27B"`` both give ``"omniedu-27b"``.  The
+    client and ``omniedu serve`` share this so the printed vLLM command and the
+    requests the toolkit sends agree; pass ``served_model=`` (or start vLLM under
+    the checkpoint's own id) to talk to a server named differently.
+    """
+    return "omniedu-" + resolve_model(name).rsplit("-", 1)[-1].lower()
+
+
+def is_preset(name: str) -> bool:
+    """True when ``name`` resolves to one of the shipped checkpoints."""
+    try:
+        return resolve_model(name) in PRESETS.values()
+    except ValueError:
+        return False
+
+
+def is_alias(name: str) -> bool:
+    """True when the caller wrote a short alias (``4B``, ``omniedu-27b``).
+
+    Distinct from :func:`is_preset`, which is also true for a full Hub id.  Only
+    the alias form is rewritten to the served name, because only then is it clear
+    the user followed ``omniedu serve``; a full id is sent unchanged so a server
+    started under vLLM's default name still works.
+    """
+    key = str(name).strip().lower()
+    return any(
+        key in (short.lower(), f"omniedu-{short.lower()}", f"omni-edu-{short.lower()}")
+        for short in PRESETS
+    )

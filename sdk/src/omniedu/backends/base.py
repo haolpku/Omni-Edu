@@ -22,8 +22,6 @@ class Backend(Protocol):
 
     async def generate(
         self, messages: list[dict[str, Any]], params: GenerationParams
-    ) -> Generation:
-        ...
+    ) -> Generation: ...
 
     async def aclose(self) -> None: ...
-

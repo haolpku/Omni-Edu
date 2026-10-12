@@ -86,4 +86,3 @@ def test_append_jsonl_keeps_unicode_readable(tmp_path) -> None:
     raw = path.read_text(encoding="utf-8")
     assert "答案" in raw
     assert json.loads(raw)["response"] == "答案"
-

@@ -1,21 +1,24 @@
-"""Command line entry point: ``omniedu tasks|chat|batch|serve``."""
+"""Command line entry point: ``omniedu tasks|chat|batch|serve|eval``."""
 
 from __future__ import annotations
 
 import argparse
 import json
+import shlex
 import sys
 from typing import Any, Sequence
 
 from . import __version__
 from .api import OmniEdu
-from .presets import known_presets, resolve_model
+from .presets import known_presets, resolve_model, served_name
 from .tasks import get_task, list_tasks
 
 
 def _add_endpoint(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--model", default="4B", help="4B / 9B / 27B, a Hub id, or a local path")
-    parser.add_argument("--base-url", help="OpenAI-compatible endpoint, e.g. http://127.0.0.1:8000/v1")
+    parser.add_argument(
+        "--base-url", help="OpenAI-compatible endpoint, e.g. http://127.0.0.1:8000/v1"
+    )
     parser.add_argument("--api-key", default="EMPTY")
     parser.add_argument("--served-model", help="name sent in requests (vLLM --served-model-name)")
     parser.add_argument("--backend", default="auto", choices=["auto", "openai", "transformers"])
@@ -95,7 +98,7 @@ def _cmd_batch(args: argparse.Namespace) -> int:
 
 def _cmd_serve(args: argparse.Namespace) -> int:
     repo = resolve_model(args.model)
-    served = args.served_model or f"omniedu-{repo.rsplit('-', 1)[-1].lower()}"
+    served = args.served_model or served_name(args.model)
     command = [
         "vllm",
         "serve",
@@ -112,7 +115,9 @@ def _cmd_serve(args: argparse.Namespace) -> int:
         json.dumps({"image": args.max_images}),
         "--trust-remote-code",
     ]
-    print(" ".join(command))
+    # shlex.join, not " ".join: the `--limit-mm-per-prompt` value contains a
+    # space, so a plain join prints a command the shell would split in two.
+    print(shlex.join(command))
     return 0
 
 
@@ -156,8 +161,23 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    arguments = list(sys.argv[1:] if argv is None else argv)
+    # ``eval`` owns a large, self-contained parser (one flag set per benchmark),
+    # so it is dispatched before the core parser is built rather than inlined.
+    if arguments[:1] == ["eval"]:
+        from .eval.cli import main as eval_main
+
+        return eval_main(arguments[1:])
+    if arguments[:1] == ["judge"]:
+        from .eval.judge.cli import main as judge_main
+
+        return judge_main(arguments[1:])
+    if arguments[:1] == ["report"]:
+        from .eval.report import main as report_main
+
+        return report_main(arguments[1:])
     parser = build_parser()
-    args = parser.parse_args(argv)
+    args = parser.parse_args(arguments)
     try:
         return int(args.func(args))
     except KeyboardInterrupt:  # pragma: no cover - interactive convenience

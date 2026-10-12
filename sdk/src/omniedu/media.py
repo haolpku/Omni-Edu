@@ -163,4 +163,3 @@ def to_transformers_content(text: str, image_urls: Iterable[str] | None = None) 
         else:
             converted.append(part)
     return converted
-

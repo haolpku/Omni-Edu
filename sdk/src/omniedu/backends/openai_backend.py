@@ -67,4 +67,3 @@ class OpenAIBackend:
 
     async def aclose(self) -> None:
         await self._client.close()
-

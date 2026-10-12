@@ -82,4 +82,3 @@ def test_leftover_images_are_appended() -> None:
 def test_unsupported_type_raises() -> None:
     with pytest.raises(TypeError):
         normalise_image(42)
-

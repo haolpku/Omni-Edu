@@ -67,7 +67,9 @@ class TransformersBackend:
             # Templates that do not accept the flag simply omit it.
             return self._processor.apply_chat_template(messages, **common)
 
-    def _generate_sync(self, messages: list[dict[str, Any]], params: GenerationParams) -> Generation:
+    def _generate_sync(
+        self, messages: list[dict[str, Any]], params: GenerationParams
+    ) -> Generation:
         inputs = self._apply_template(messages, params.enable_thinking).to(self._model.device)
         generate_kwargs: dict[str, Any] = {
             "max_new_tokens": params.max_new_tokens,
@@ -89,4 +91,3 @@ class TransformersBackend:
 
     async def aclose(self) -> None:
         return None
-

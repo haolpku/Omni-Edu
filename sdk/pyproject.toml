@@ -31,9 +31,26 @@ dependencies = [
 
 [project.optional-dependencies]
 # `accelerate` is required by the local backend: it loads the checkpoint with
-# device_map="auto" so a 4B/9B/27B model lands on the available GPUs.
-hub = ["huggingface_hub>=0.23"]
+# device_map="auto" so a 4B/9B/27B model lands on the available GPUs.  The
+# weights themselves come through `transformers`, which already depends on
+# huggingface_hub, so there is no separate download extra.
 transformers = ["torch>=2.2", "transformers>=4.44", "accelerate>=0.30"]
+# The benchmark suite (`omniedu eval`).  `eval-local` adds the heavy pieces a
+# few scorers need: the EDUMATH MaC classifier and the MathTutorBench reward
+# model both load torch checkpoints locally.
+eval = [
+    "httpx>=0.27",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "langdetect>=1.0.9",
+    "immutabledict>=4.0",
+    "nltk>=3.8",
+    # LongTutor's R-L column is `rouge_score`'s rougeL (with its stemming
+    # tokenizer), the same call the official scorer makes.
+    "rouge-score>=0.1.2",
+]
+eval-local = ["torch>=2.2", "transformers>=4.44", "pyyaml>=6.0"]
 dev = ["pytest>=7.0", "build"]
 
 [project.scripts]
@@ -50,9 +67,28 @@ Issues = "https://github.com/haolpku/Omni-Edu/issues"
 where = ["src"]
 
 [tool.setuptools.package-data]
-omniedu = ["tasks.json"]
+omniedu = [
+    "tasks.json",
+    "eval/benchmarks.json",
+    "eval/judge/prompts/*",
+    "eval/vendor/ifeval_official/*.py",
+    "eval/clean/*/*.json",
+    "eval/mathtutorbench/configs/*.yaml",
+    "eval/mathtutorbench/clean_datasets/*.json",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
 filterwarnings = ["error::DeprecationWarning:omniedu.*"]
+
+[tool.black]
+line-length = 100
+# The IFEval scorer is vendored verbatim from google-research/ifeval; it must
+# stay byte-identical upstream code.
+extend-exclude = "vendor"
+
+[tool.isort]
+profile = "black"
+line-length = 100
+skip_glob = ["*/vendor/*"]

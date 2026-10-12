@@ -1,25 +1,38 @@
-# omniedu
+# OmniEdu
 
-Official toolkit for **[Omni-Edu](https://huggingface.co/OpenDCAI)** — open K-12
-learning and teaching models at 4B / 9B / 27B, fine-tuned from the Qwen3.5/3.8
-family on the Omni-Edu instruction mixture.
+**A unified inference and evaluation toolkit for the Omni-Edu model family.**
 
-The toolkit wraps the parts everyone rewrites by hand: picking a checkpoint,
-building the chat messages, attaching images, choosing one of the teaching task
-instructions, and running a JSONL batch. The official evaluation harness lives
-outside this package — this is the model-calling layer only.
+[Omni-Edu](https://huggingface.co/OpenDCAI) is an open-source model family for K–12 learning and teaching, available in 4B, 9B, and 27B sizes. The models are fine-tuned from the Qwen3.5/3.8 series for educational tasks.
 
-## Install
+`omniedu` provides a Python API and command-line tools for text and image inputs, task-specific teaching instructions, and batch inference. It also offers a unified interface for running benchmarks on both Omni-Edu and other models served through OpenAI-compatible APIs.
+
+| Feature | Interface |
+| --- | --- |
+| Model inference and multimodal chat | `OmniEdu.from_pretrained()`, `model.chat()` |
+| Teaching task instructions | `model.chat(..., task=...)` |
+| JSONL batch inference | `omniedu batch` |
+| Benchmark evaluation | `omniedu eval` |
+| Evaluation report generation | `omniedu report` |
+| Open-ended response scoring | `omniedu judge` |
+
+## Installation
+
+Choose the installation option that fits your use case:
 
 ```bash
-pip install omniedu                 # talk to a vLLM / OpenAI-compatible server
-pip install "omniedu[transformers]" # also run the weights locally
+pip install omniedu                    # Connect to OpenAI-compatible inference services
+pip install "omniedu[transformers]"    # Load models locally
+pip install "omniedu[eval]"            # Run benchmark evaluations
+pip install "omniedu[eval,eval-local]" # Add dependencies for local scoring
 ```
 
-Model weights stay on Hugging Face and are downloaded on demand — the package
-contains code and task instructions only.
+Model weights are hosted on Hugging Face and are not included in the PyPI package. Third-party benchmark code and datasets must be obtained separately under their respective terms.
 
-## Quickstart
+## Quick Start
+
+### Model Inference
+
+If you already have an OpenAI-compatible inference service running, connect to it directly:
 
 ```python
 from omniedu import OmniEdu
@@ -27,19 +40,30 @@ from omniedu import OmniEdu
 model = OmniEdu.from_pretrained("27B", base_url="http://127.0.0.1:8000/v1")
 
 response = model.chat(
-    text="帮我判断学生这一步哪里错了，先给提示。",
+    text="A student expanded 2(x + 3) as 2x + 3. Identify the mistake and give a hint first.",
+    task="diagnose_and_correct",
+)
+print(response.text)
+```
+
+Replace `"27B"` with `"4B"` or `"9B"` to use a different Omni-Edu model size. You can also provide a full Hugging Face model ID or a local model path.
+
+To include an image, pass it using the `image` argument:
+
+```python
+response = model.chat(
+    text="Review this student's work. Identify any errors and provide step-by-step hints.",
     image="student_work.png",
     task="diagnose_and_correct",
 )
 print(response.text)
 ```
 
-`model.chat(...)` is the synchronous form. Inside an event loop, use
-`await model.achat(...)` instead.
+You can also pass multi-turn conversations through `messages` or use `await model.achat(...)` for asynchronous inference.
 
-## Serving the model
+### Serving a Model
 
-The recommended backend is vLLM with an OpenAI-compatible endpoint:
+You can serve Omni-Edu with [vLLM](https://github.com/vllm-project/vllm):
 
 ```bash
 vllm serve OpenDCAI/Omni-Edu-27B \
@@ -50,85 +74,123 @@ vllm serve OpenDCAI/Omni-Edu-27B \
   --trust-remote-code
 ```
 
-`omniedu serve --model 27B --tensor-parallel-size 4` prints the same command.
-The models are trained no-think, so every request disables thinking
-(`chat_template_kwargs.enable_thinking = false`) and decodes greedily with
-`temperature=0` — the same protocol used for the paper's numbers.
-
-## Teaching task instructions
-
-These are the system instructions the models were **fine-tuned with**: stage 6 of
-the data pipeline attaches one to every education-specific training row. The
-package ships the paper's 19 templates, all defined in one place. Use them by id:
-
-```python
-from omniedu import list_tasks
-
-for task in list_tasks().values():
-    print(task.id, "|", task.category)
-
-model.chat(text="...", task="solve_reasoned")
-```
-
-| Category | Task ids |
-|---|---|
-| Solving | `solve_answer_only`, `solve_reasoned`, `reading_comprehension` |
-| Diagnosis and feedback | `diagnose_and_correct`, `answer_assessment`, `writing_feedback` |
-| Curriculum grounding | `knowledge_point`, `mathfish_strict`, `mathfish_multirelation` |
-| Tutoring and scaffolding | `mathtutor_scaffolding`, `mathtutor_pedagogy_following`, `tutorbench`, `active_probe`, `multihint`, `multiturn_socratic`, `oatutor_guidance`, `socratic_question_chain`, `direct_explanation`, `longtutor_official` |
-
-`register_task(id, instruction)` adds your own without touching the package.
-
-General-purpose examples are never remapped: they keep the system prompt they
-came with, so the pipeline defines no generic template for them. Pass your own
-with `system=` when you need one.
-
-Two consequences worth knowing:
-
-* `chat()` and `batch()` send **no** system prompt unless you pass `task=` or
-  `system=`. The default path matches the way the models were trained and the
-  paper's inference protocol.
-* The paper's benchmark numbers were produced **without** these instructions —
-  the evaluation protocol explicitly does not add pedagogical system prompts
-  (`evaluation/PROTOCOL.md`). To reproduce a benchmark score, do not pass
-  `task=`.
-
-## Batch inference
-
-JSONL in, JSONL out, resumable:
+Adjust the deployment settings to match your hardware. The toolkit can also generate the corresponding launch command:
 
 ```bash
-omniedu batch --input problems.jsonl --output predictions.jsonl \
-  --model 27B --base-url http://127.0.0.1:8000/v1 \
-  --task solve_reasoned --concurrency 32
+omniedu serve --model 27B --tensor-parallel-size 4
 ```
 
-Input rows may be ShareGPT-style (`messages` + `images`) or flat
-(`text` / `prompt` / `question`, plus `image` / `images`). `<image>` markers
-inside the text are replaced by the supplied images in order.
+**Note:** `omniedu serve` prints the command; it does not start the server.
 
-Each output row records the model, task, decoding parameters and the SHA-256 of
-the system prompt, so a prediction file can be traced back to the exact
-instruction that produced it. Rows that fail are retried on the next run; only
-successful rows are treated as done, and the output file is compacted so a
-retry never leaves two lines for the same sample.
+When connecting to a remote service using the short aliases `"4B"`, `"9B"`, or `"27B"`, the SDK automatically uses the corresponding served model names (`omniedu-4b`, `omniedu-9b`, or `omniedu-27b`). If your service uses a different name, specify it with `served_model=`. Full model IDs and local paths are not rewritten.
 
-## Python API
+Alternatively, install `omniedu[transformers]` and use `OmniEdu.from_pretrained("4B")` to load a model locally without a separate inference server.
+
+## Teaching Task Instructions
+
+OmniEdu includes 19 teaching task instructions covering problem solving, error diagnosis, knowledge-point analysis, and guided tutoring. Select an instruction with the `task` argument:
 
 ```python
-from omniedu import OmniEdu
-
-OmniEdu.from_pretrained("4B")                                   # OpenDCAI/Omni-Edu-4B
-OmniEdu.from_pretrained("OpenDCAI/Omni-Edu-9B")                 # any HF id
-OmniEdu.from_pretrained("/models/Omni-Edu-4B")                  # local path
-OmniEdu.from_pretrained("4B", base_url="http://host:8000/v1")   # remote endpoint
-
-model.chat(text="...", task="solve_reasoned", max_new_tokens=4096)
-model.chat(messages=[{"role": "user", "content": "..."}])
-model.batch("in.jsonl", out="out.jsonl", task="solve_reasoned")
+response = model.chat(
+    text="Don't give the answer directly. Guide the student with questions instead.",
+    task="multiturn_socratic",
+)
 ```
+
+| Use case | Task ID |
+| --- | --- |
+| Step-by-step solutions | `solve_reasoned` |
+| Error diagnosis and feedback | `diagnose_and_correct` |
+| Knowledge-point analysis | `knowledge_point` |
+| Socratic tutoring | `multiturn_socratic` |
+
+Use `list_tasks()` to explore all 19 built-in tasks. You can register custom instructions with `register_task(id, instruction)` or provide a system instruction directly using `system=`.
+
+**Task instructions are optional.** If neither `task` nor `system` is provided, no additional system instruction is added. **You do not need to specify `task` when running benchmarks.**
+
+## Batch Inference
+
+Use `omniedu batch` to process JSONL files with concurrent requests and resume support:
+
+```bash
+omniedu batch \
+  --input problems.jsonl \
+  --output predictions.jsonl \
+  --model 27B \
+  --base-url http://127.0.0.1:8000/v1 \
+  --task solve_reasoned \
+  --concurrency 32
+```
+
+Input records can use the `messages` conversation format or simpler fields such as `text`, `prompt`, or `question`, with optional `image` or `images` fields. When restarted, the command skips completed records and retries unfinished or failed ones.
+
+## Model Evaluation
+
+`omniedu eval` provides a unified interface for 12 educational and general-purpose benchmarks. You can evaluate Omni-Edu models or other models deployed through an OpenAI-compatible API.
+
+Supported benchmarks: **K12-Bench, MathFish, EDUMATH, GAOKAO-Bench, EXAMS-V, MDK12-Bench, MathTutorBench, TutorBench, LongTutor, IFEval, GPQA, and MMMU-Pro**.
+
+### Running Evaluations
+
+```bash
+# List supported benchmarks
+omniedu eval --list
+
+# Evaluate Omni-Edu-4B
+omniedu eval \
+  --model 4B \
+  --base-url http://127.0.0.1:8000/v1 \
+  --benchmarks gpqa,ifeval,MMMU-Pro
+
+# Evaluate your own model (use its served model name)
+omniedu eval \
+  --model my-model \
+  --base-url http://127.0.0.1:8000/v1 \
+  --benchmarks gpqa,ifeval,MMMU-Pro
+```
+
+Use `--benchmarks` to select one or more benchmarks, or `all` to run the full suite.
+
+Some benchmarks require upstream datasets or code to be prepared in advance. Use `--official-root` to specify the corresponding repository path when needed. For example:
+
+```bash
+omniedu eval \
+  --model 27B \
+  --base-url http://127.0.0.1:8000/v1 \
+  --benchmarks K12-Bench \
+  --official-root K12-Bench=/data/K12-KGraph \
+  --data-root evaluation_data
+```
+
+### Generating Reports
+
+Each benchmark produces a `summary.json` file. Use `omniedu report` to combine results from multiple models into Markdown tables following the format of the three main results tables in the [Omni-Edu paper](https://arxiv.org/abs/2609.23088). You can also export the aggregated metrics as JSON:
+
+```bash
+omniedu report \
+  --results-root results/base/outputs \
+  --results-root results/my_sft/outputs \
+  --out tables.md \
+  --json metrics.json
+```
+
+If scoring outputs are stored separately, use `--judgments-root` to specify their location.
+
+### Scoring Open-Ended Responses
+
+Some benchmarks require an additional scoring step for open-ended responses. Use `omniedu judge` with a separate judge model:
+
+```bash
+omniedu judge \
+  --task tutorbench \
+  --input predictions.jsonl \
+  --output judged.jsonl \
+  --base-url https://api.example.com/v1 \
+  --judge-model gpt-4.1-mini
+```
+
+Here, `--base-url` and `--judge-model` refer to the scoring service, which may differ from the model being evaluated.
 
 ## License
 
-The toolkit is licensed under [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0).
-Model weights keep their upstream licence and are never redistributed here.
+The toolkit is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). Model weights, third-party benchmark code, and datasets remain subject to their respective licenses and terms of use.

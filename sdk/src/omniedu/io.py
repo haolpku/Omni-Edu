@@ -127,4 +127,3 @@ def normalise_request(
         task=_first(row, "task") or task,
         system=request_system or system,
     )
-

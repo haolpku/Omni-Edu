@@ -1,0 +1,616 @@
+<bos><start_of_turn>user
+You are an experienced elementary school teacher tasked with evaluating word problems and solutions for 3rd-5th grade students written by a less experienced teacher. The word problem and solution you will evaluate will be based on a grade level and math topic(s) and your job is to determine whether the problem and solution are high quality. 
+    
+There are four criteria you will use to evaluate the word problem: solvability, accuracy, educational appropriateness, and standards alignment. Questions that meet all four criteria are labeled as high quality. Any word problem or solution that does not meet one or more of the criteria is labeled as not high quality. Here is more information about how to evaluate a word problem and solution based on the four criteria:
+    
+Solvability:
+A solvable question means that it can be solved with the information present and does not contain a mathematical scenario that is impossible (e.g., giving away more money or items than you have). 
+    
+Accuracy:
+An accurate solution is one where the final answer and intermediate reasoning are both correct. If the final answer is correct but the intermediate reasoning is wrong, does not make sense, is unnecessarily repetitive, and/or is too complicated for a student/teacher to read, the solution is not accurate. 
+    
+Educational Appropriateness:
+An educationally appropriate question is one you would feel comfortable giving to a student in a 3rd-5th grade school setting. Educationally appropriate questions contain content and context appropriate for students in a school setting. There are four main reasons why a question would be educationally inappropriate:
+1. It contains material inappropriate for a school setting (e.g., language about harming someone)
+2. It is strange, confusing, contains conflicting information, and/or is not based in reality (e.g., contains misinformation)
+3. It requires no mathematical operations to solve because it gives the answer away
+4. It is inappropriate for a different reason
+    
+Standards alignment:
+A standards aligned question is one that adequately addresses important elements from EACH pre-specified numbered math topic. If more than one math topic is listed, then the question should incorporate important elements of EACH numbered math topic. If only one math topic is included, then it is okay if the question only incorporates elements of that topic. You should only evaluate whether the question incorporates elements from EACH listed topic; you should not penalize questions that could incorporate other topics that are not in the numbered list of topics. If a specific numbered topic lists multiple mathematical operations like addition, subtraction, and/or division, it is okay if the problem just addresses one of those operations; if a topic says "the question may include OTHER TOPIC," then it is okay if the question does not include that other topic, as it is optional. However, the problem should incorporate meaningful elements of EACH numbered topic; for example, if a numbered topic lists decimal division, the problem should incorporate decimal division. There are four main reasons why a question would not be standards aligned:
+1. It is too hard for the given topic(s)
+2. It does not address some important parts of the numbered topic(s) or one or more of the numbered topic(s)
+3. It does not address the numbered topic(s) at all
+4. It requires additional math topics or operations that are not listed in the specified math topic(s) 
+
+Here are some examples of successful evaluations:
+Example 1:
+
+Grade Level: 4
+
+Math Topic(s): 
+4
+
+Question: 4
+
+Solution: 
+4
+
+Is this question high quality? 
+No. The question is not high quality because it is not solvable because it does not define how many books we are starting with so it is impossible to determine how many will be left over. 
+
+Example 2:
+
+Grade Level: 4
+
+Math Topic(s): 
+4
+
+Question: 4
+
+Solution: 
+4
+
+Is this question high quality? 
+No. This question is not high quality because the solution is incorrect. To solve this problem, we need to divide 9 by 3/4 instead of multiply 9 by 3/4. Therefore, the final answer should be 12 instead of 6 (9 / 3/4 = 12).
+
+Example 3:
+
+Grade Level: 5
+
+Math Topic(s): 
+1. Solving a problem that requires writing an equation with a single uknown variable using addition, subtraction, multiplication, and/or division
+
+Question: Danny bought a box of pencils and divided them evenly among 7 friends. Each friend got 9 pencils. How many pencils were in the box?
+
+Solution:
+To solve this problem, we can write an equation with a single variable representing the unknown quantity.
+
+Let the unknown quantity (the total number of pencils in the box) be represented by the variable ""p.""
+
+We know Danny evenly divided the pencils among 7 friends, and each friend got 9 pencils. Thus, we can write the equation:
+
+p / 7 = 9
+
+To solve for p, we multiply both sides of the equation by 7:
+
+p = 9 x 7  
+p = 63
+
+Therefore, the box had 63 pencils.
+
+The final answer is 63.
+
+Is this question high quality?
+No. The question is not high quality because the solution is too confusing for a student to read. While correct, the solution includes math notation that would be unfamiliar for a young learner. 
+
+Example 4:
+
+Grade Level: 3
+
+Math Topic(s):
+1. Single-step multiplication and/or division without remainders of whole numbers through 10 x 10
+
+Question: There are 6 cats at the park. Each cat has 7 toes. How many toes do the cats have in total?
+
+Solution:
+To solve this problem, we need to multiply the number of cats (6) by the number of toes each cat has (7)
+6 x 7 = 42
+The cats have 42 toes in total. 
+The final answer is 42. 
+
+Is this question high quality?
+No. The question is not high quality because it is not educationally inappropriate. Specifically, it contains misinformation (that cats have 7 toes). 
+
+Example 5:
+
+Grade Level: 4
+
+Math Topic(s): 
+4
+
+Question: 4
+
+Solution: 
+4
+
+Is this question high quality? 
+No. This question is not high quality because it does not incorporate important parts of the specified numbered topic(s). Specifically, it does not incorporate division with decimals. 
+
+Example 6:
+
+Grade Level: 4
+
+Math Topic(s): 
+4
+
+Question: 4
+
+Solution: 
+4
+
+Is this question high quality? 
+Yes. This question is high quality because it is solvable, has an accurate solution, is educationally appropriate, and aligned with the specfied topic.
+
+Example 7:
+
+Grade Level: 5
+
+Math Topic(s): 
+1. Single-step and multistep addition, subtraction, multiplication, and/or division with whole numbers where:
+   i) sums, differences, and products do not exceed five digits;
+   ii) factors do not exceed two digits by three digits;
+   iii) divisors do not exceed two digits; or
+   iv) dividends do not exceed four digits
+2. Division with remainders
+3. Single-step and multistep addition, subtraction, and/or multiplication of decimals
+4. Single-step division with decimals
+
+Question: A Reptile has 18 boxes of food to pack into crates that hold 3 boxes each. If the Reptile packs the boxes into crates, how many crates will the Reptile have, and how many boxes will be left over?
+
+Solution: 
+To find out how many crates the Reptile will have and how many boxes will be left over, we need to divide the total number of boxes (18) by the number of boxes each crate can hold (3).
+18 / 3 = 6 with a remainder of 0.
+This means the Reptile will have 6 crates and there will be no boxes left over.
+The final answer is 6.
+
+Is this question high quality? 
+No. This question is not high quality because while it is solvable, has an accurate solution, and is educationally appropriate, it does not meaningfully incorporate each of the numbered topics. Specifically, it does not require any decimal operations (Topics 3 and 4). 
+
+Example 8:
+
+Grade Level: 5
+
+Math Topic(s): 
+1. Single-step and multistep addition, subtraction, multiplication, and/or division with whole numbers where:
+   i) sums, differences, and products do not exceed five digits;
+   ii) factors do not exceed two digits by three digits;
+   iii) divisors do not exceed two digits; or
+   iv) dividends do not exceed four digits
+2. Division with remainders
+3. Single-step and multistep addition, subtraction, and/or multiplication of decimals
+4. Single-step division with decimals
+
+Question: A Virtual Reality (VR) company has 48 headsets to package and ship to customers. They want to put 4 headsets in each box. How many boxes will they need to buy, and how many headsets will be left over?
+
+Solution: 
+To find out how many boxes they need, we need to divide the total number of headsets (48) by the number of headsets per box (4).
+48 / 4 = 12
+This means they can fill 12 boxes with 4 headsets each.
+To find the remainder, we can multiply the number of boxes (12) by the number of headsets per box (4) and subtract from the total number of headsets.
+12 x 4 = 48
+48 - 48 = 0
+Since 48 divided by 4 has no remainder, they will not have any headsets left over.
+The final answer is 12.
+
+Is this question high quality? 
+No. This question is not high quality because while it is solvable, has an accurate solution, and is educationally appropriate, it does not meaningfully incorporate each of the numbered topics. Specifically, it does not require any decimal operations (Topics 3 and 4). 
+
+Example 9:
+
+Grade Level: 5
+
+Math Topic(s): 
+1. Single-step and multistep addition, subtraction, multiplication, and/or division with whole numbers where:
+   i) sums, differences, and products do not exceed five digits;
+   ii) factors do not exceed two digits by three digits;
+   iii) divisors do not exceed two digits; or
+   iv) dividends do not exceed four digits
+2. Single-step and multistep addition, subtraction, and/or multiplication of decimals
+3. Single-step division with decimals
+
+Question: You have $12 in nickels and quarters. If you have the same number of each kind of coin, how many nickels do you have?
+
+Solution: 
+You have $12 in nickels and quarters. 
+Since you have the same number of each kind of coin, let's call the number of nickels and quarters "x". 
+The value of a nickel is $0.05, so the value of x nickels is $0.05x. 
+The value of a quarter is $0.25, so the value of x quarters is $0.25x. 
+The total amount of money is $12, so we can set up the equation $0.05x + $0.25x = $12. 
+Combining like terms, we get $0.30x = $12. 
+To solve for x, we divide both sides by $0.30. 
+x = $12 / $0.30
+x = 40
+This means you have 40 nickels. 
+The final answer is 40.
+
+Is this question high quality? 
+Yes. This question is high quality because it is solvable, has an accurate solution, is educationally appropriate, and meaningfully incorporates elements of each numbered math topic. Specifically, it includes division with a whole number (Topic 1), addition with decimals (Topic 2), and division with decimals (Topic 3).
+
+Example 10:
+
+Grade Level: 4
+
+Math Topic(s): 
+1. Single-step multiplication of a whole number 12 or less with a unit fraction with denominators 2, 3, 4, 5, 6, 8, 10, and 12
+
+Question: A Power Ranger is making packs of energy bars for a hike. She needs to put 1/4 of a box of energy bars into each pack. If she has 8 boxes of energy bars, how many packs can she make?
+
+Solution: 
+To find out how many packs the Power Ranger can make, we first need to multiply the number of boxes she has by the fraction of a box that each pack needs.
+The Power Ranger has 8 boxes and each pack needs 1/4 of a box.
+8 × 1/4 = 8 ÷ 4 = 2
+This means that 8 boxes can make 2 packs, since 8 × 1/4 is the same as 8 ÷ 4. 
+So, the Power Ranger can make 2 packs with 8 boxes of energy bars and each pack having 1/4 of a box.
+However, to get the correct answer we have to do 8 x 4 = 32 and 1/4 x 32 = 8. 
+The final answer is 32.
+
+Is this question high quality?
+No. This question is not high quality because the solution is inaccurate. Specifically, while the final answer is correct, it contains intermediate reasoning steps that are incorrect and would be inappropriate to present to a young learner.
+
+Example 11: 
+
+Grade Level: 4
+
+Math Topic(s): 
+1. Single-step division without remainders for a one-digit divisor and a two- or three-digit dividend
+
+Question: Ms. Evans is organizing a field trip to the zoo for her 4th-grade class. There are 264 students in the 4th grade. The school has rented 8 vans to transport the students. If Ms. Evans wants to put the same number of students in each van, how many students will be in each van, and will there be any students left behind?
+
+Solution: 
+To find out how many students will be in each van, we need to divide the total number of students (264) by the number of vans (8).
+264 / 8 = 33
+This means each van will have 33 students.
+To find out if there are any students left behind, we multiply the number of vans (8) by the number of students in each van (33) and see if it equals the total number of students (264).
+8 x 33 = 264
+Since 8 x 33 = 264, there will be no students left behind.
+The final answer is 33
+
+Is this question high quality?
+No. This question is not high quality because the solution is inaccurate. Specifically, while the final answer is correct, the solution includes a multiplication step which is not necessary since we already know that there will be no students left over since the division does not have a remainder.
+
+Example 12:
+
+Grade Level: 4
+
+Math Topic(s):
+1. Single-step or multistep multiplication with whole numbers using a) a two-digit factor and a one-digit factor, b) a three-digit factor and a one-digit factor or c) a two-digit factor and a two-digit factor
+2. Single-step or multistep addition and/or subtraction with whole numbers less than 1,000,000
+
+Question: The school is planning a field trip to the zoo. There are 325 students in the fourth and fifth grades who want to go. Each bus can hold 25 students. If 15 students have already signed up to ride with their families in cars, how many buses are needed for the remaining students, and how many students will be on the last bus?
+
+Solution:
+First, we need to find out how many students still need a bus. We subtract the number of students riding with their families (15) from the total number of students who want to go (325).
+325 - 15 = 310 students.
+
+Next, we need to determine how many buses are needed. We divide the number of students needing a bus (310) by the capacity of each bus (25).
+310 / 25 = 12 with a remainder of 10.
+
+This means 12 buses will be full, and there will be 10 students left over. Since we need to transport all the students, we need one more bus for the remaining students.
+
+So, the total number of buses needed is 12 + 1 = 13 buses.
+
+The last bus will have 10 students on it.
+
+The final answer is 13 buses, and the last bus will have 10 students.
+
+Is this question high quality?
+No. This question is not high quality because it is not standards aligned. Specifically, this question requires division which is not listed in the specified math topics.
+
+Example 13:
+
+Grade Level: 4
+
+Math Topic(s):
+1. Single-step division with remainders for a one-digit divisor and a two- or three-digit dividend
+2. Single-step or multistep addition and/or subtraction with whole numbers less than 1,000,000
+
+Question: The school is collecting cans of food for a local food bank. Fourth grade collected 752 cans, fifth grade collected 685 cans, and sixth grade collected 818 cans. The volunteers want to pack the cans into boxes that hold 8 cans each. How many boxes will they need, and how many cans will be left over?
+
+Solution:
+First, we need to find the total number of cans collected. To do this, we will add the number of cans from each grade:
+752 + 685 + 818 = 2255 cans
+
+Now, we need to divide the total number of cans (2255) by the number of cans each box holds (8) to see how many boxes are needed and if there are any cans left over.
+2255 / 8 = 281 with a remainder of 7
+
+This means they will need 281 boxes to hold the cans, and there will be 7 cans left over.
+
+The final answer is 281 boxes with 7 cans left over.
+
+Is this question high quality?
+No. This question is not high quality because it is too hard for the specified math topics. Specifically, the dividend is too big - it is 4 digits and the maximum size of a dividend in math topic 1 is 3 digits.
+
+Example 14:
+
+Grade Level: 5
+
+Math Topic(s):
+1. Single-step and multistep addition and/or subtraction with fractions (proper or improper) and/or mixed numbers with like or unlike denominators limited to 2, 3, 4, 5, 6, 8, 10, and 12
+
+Question: A baker is preparing for a school bake sale. She plans to bake cookies, brownies, and cupcakes. She needs 5/8 of a bag of flour for the cookies, 1/6 of a bag of flour for the brownies, and 1/4 of a bag of flour for the cupcakes. If the baker has a full bag of flour (represented by the fraction 1), how much flour will she have left over after baking all three treats?
+
+Solution:
+To find out how much flour is left, we need to subtract the amount of flour needed for each treat from the full bag of flour. First, we need to find the total amount of flour used by adding the fractions 5/8, 1/6, and 1/4.
+First, find a common denominator for 8, 6, and 4. The least common multiple of 8, 6, and 4 is 24.
+Now, convert the fractions to have a denominator of 24:
+5/8 = 15/24 (multiply numerator and denominator by 3)
+1/6 = 4/24 (multiply numerator and denominator by 4)
+1/4 = 6/24 (multiply numerator and denominator by 6)
+Now, add the fractions: 15/24 + 4/24 + 6/24 = 25/24
+Since 25/24 is an improper fraction, we can convert it to a mixed number: 25/24 = 1 1/24.
+This means the baker uses 1 1/24 of a bag of flour.
+Now we subtract the amount of flour used from the full bag (1):
+1 - 1 1/24.
+To subtract, we need to rewrite 1 as 24/24.
+So, we have 24/24 - 1/24 = 23/24
+The baker will have 23/24 of a bag of flour left over.
+The final answer is 23/24.
+
+Is this question high quality?
+No. The question is not high quality because it is not solvable and the solution is incorrect. First off, the baker ends up using more than the amount of flour she actually has, so the problem is not possible to solve. Second, the solution is incorrect because it finds a positive final answer (23/24) instead of the true final answer which is negative (-1/24). 
+
+Example 15:
+
+Grade Level: 4
+
+Math Topic(s): 
+1. Single-step or multistep multiplication with whole numbers using a) a two-digit factor and a one-digit factor, b) a three-digit factor and a one-digit factor or c) a two-digit factor and a two-digit factor
+2. Single-step or multistep addition and/or subtraction with whole numbers less than 1,000,000
+
+Question: Ms. Evans is planning a field trip to the science museum for her 4th-grade class. There are 125 students in her class. The museum charges $16 per student. Ms. Evans has already collected $1,200 from the students. How much more money does Ms. Evans need to collect to pay for all the students to go on the field trip, and how many chaperones can she hire with the remaining money if each chaperone costs $25?
+
+Solution:
+First, we need to find the total cost of the field trip for all the students. We can do this by multiplying the number of students (125) by the cost per student ($16).
+125 x 16 = 2000
+So, the total cost of the field trip is $2000.
+Next, we need to find out how much more money Ms. Evans needs to collect. We can do this by subtracting the money she already has ($1200) from the total cost ($2000).
+2000 - 1200 = 800
+Ms. Evans needs to collect $800 more.
+Finally, we need to determine how many chaperones she can hire with the remaining $800. We can do this by dividing the remaining money ($800) by the cost per chaperone ($25).
+800 / 25 = 32
+Ms. Evans can hire 32 chaperones.
+
+The final answer is $800 and 32 chaperones.
+
+Is this question high quality?
+No. The question is not high quality because it is not standards aligned. Specifically, the question requires division which is not listed in the specified math topics. It also includes mutiplication that is too hard for math topic 1 because it requires 3 digit by 2 digit multiplication, and the standard only calls for 3 digit by 1 digit multiplication.
+
+Example 16:
+
+Grade Level: 4
+
+Math Topic(s):
+1. Determine equivalent measures within the U.S. Customary system for length, weight/mass, and/or liquid volume
+
+Question: A baker is making a large batch of cookies for a school fundraiser. The recipe calls for 3 pounds of flour. If the baker only has a measuring cup that measures in ounces, and knows that 1 pound is equal to 16 ounces, how many ounces of flour does the baker need? If the baker also needs 1 pint of milk, and 1 pint is equal to 2 cups, how many cups of milk does the baker need?
+
+Solution: 
+To find out how many ounces of flour the baker needs, we first need to convert the amount of flour required from pounds to ounces.
+Since 1 pound is equal to 16 ounces, we can convert 3 pounds to ounces by multiplying 3 by 16.
+3 x 16 = 48
+This means the baker needs 48 ounces of flour to make the cookies.
+Next, to find out how many cups of milk the baker needs, we need to use the given conversion that there are 2 cups in 1 pint. 
+The baker needs 1 pint of milk. 
+To convert pints to cups, we need to multiply the number of pints (1) by the number of cups in a pint (2).
+1 x 2 = 2
+This means the baker needs 2 cups of milk.
+The final answer is 48 ounces and 2 cups.
+
+Is this question high quality?
+No. The question is not high quality because it is not educationally appropriate. Specifically, the second part of the question asking about pints of milk gives the answer away by saying that the baker has 1 pint of milk and that 1 pint of milk equals 2 cups. Therefore, there are no mathematical operations required to solve that part of the question since the answer was already included in the question.
+
+Example 17:
+
+Grade Level: 5
+
+Math Topic(s):
+1. Single-step and multistep addition, subtraction, multiplication, and/or division with whole numbers where:
+   i) sums, differences, and products do not exceed five digits;
+   ii) factors do not exceed two digits by three digits;
+   iii) divisors do not exceed two digits; or
+   iv) dividends do not exceed four digits
+2. Single-step and multistep addition, subtraction, and/or multiplication of decimals
+
+Question: A bakery made 325 cookies. They packed the cookies into boxes that hold 24 cookies each. If they sell each box for $8.75, how much money will they make if they sell all the boxes, and what is the cost of the remaining cookies if each cookie costs $0.50?
+
+Solution:
+To solve this problem, we first need to find out how many boxes of cookies the bakery can make. 
+They made 325 cookies and each box holds 24 cookies, so we divide 325 by 24.
+325 / 24 = 13 with a remainder of 13
+This means they can make 13 full boxes of cookies, and they will have 13 cookies left over.
+To find out how much money they will make from the boxes, we multiply the number of boxes (13) by the price per box ($8.75).
+13 x $8.75 = $113.75
+This means they will make $113.75 from the boxes.
+Now, we need to calculate the cost of the remaining cookies. 
+They have 13 cookies left over, and each cookie costs $0.50.
+So, we multiply the number of cookies (13) by the cost per cookie ($0.50).
+13 x $0.50 = $6.50
+The final answer is $113.75 and $6.50.
+
+Is this question high quality?
+No. The question is not high quality because it is not educationally appropriate. Specifically, the question does not make sense because the cookies cost more than the price they are sold for. Since cookies cost $.50, a box of cookies costs $12 to make and it is only sold for $8.75.
+
+Example 18:
+
+Grade Level: 4
+
+Math Topic(s): 
+1. Single-step and multistep addition and/or subtraction with decimals through the thousandths
+
+Question: Ms. Sunshine is planning a field trip to the zoo for her 4th-grade class. The total cost for the bus rental is $125.50. Each student ticket to the zoo costs $8.75. There are 23 students in Ms. Sunshine‚Äôs class. If Ms. Sunshine has already raised $150.00 through bake sales, how much more money does she need to collect to cover the total cost of the field trip?
+
+Solution:
+First, we need to find the total cost of the student tickets. To do this, we will multiply the number of students (23) by the cost of each ticket ($8.75).
+
+23 x $8.75 = $201.25
+
+Next, we need to find the total cost of the field trip. This includes the bus rental ($125.50) and the cost of the student tickets ($201.25).
+
+$125.50 + $201.25 = $326.75
+
+Now, we need to find how much more money Ms. Sunshine needs to collect. To do this, we will subtract the amount she has already raised ($150.00) from the total cost of the field trip ($326.75).
+
+$326.75 - $150.00 = $176.75
+
+This means Ms. Sunshine needs to collect $176.75 more to cover the total cost of the field trip.
+The final answer is 176.75.
+
+Is this question high quality?
+No. This question is not high quality because it is not standards aligned. Specifically, the question requires decimal multiplication which is not included in the specified math topic.
+
+Example 19:
+
+Grade Level: 4
+
+Math Topic(s):
+1. Determine equivalent measures within the U.S. Customary system for length, weight/mass, and/or liquid volume
+
+Question: Ms. Davis is planning a class party! She needs to buy juice boxes for her 24 students. The juice boxes come in packs of 6. She also wants to buy pretzels. The pretzel bags each contain 8 ounces of pretzels, and Ms. Davis wants to give each student 3 ounces of pretzels. How many packs of juice boxes does she need, and how many bags of pretzels does she need?
+
+Solution:
+First, let's figure out how many packs of juice boxes Ms. Davis needs. She has 24 students and each pack contains 6 juice boxes. To find the number of packs, we need to divide the total number of students by the number of juice boxes per pack:
+
+24 students / 6 juice boxes/pack = 4 packs
+
+So, Ms. Davis needs 4 packs of juice boxes.
+
+Now, let's figure out how many bags of pretzels she needs. She wants to give each of the 24 students 3 ounces of pretzels. So, we need to find the total ounces of pretzels needed:
+
+24 students x 3 ounces/student = 72 ounces
+
+Now, we know each bag contains 8 ounces of pretzels. To find out how many bags she needs, we divide the total ounces needed by the ounces per bag:
+
+72 ounces / 8 ounces/bag = 9 bags
+
+Therefore, Ms. Davis needs 9 bags of pretzels.
+
+The final answer is: Ms. Davis needs 4 packs of juice boxes and 9 bags of pretzels.
+
+Is this question high quality?
+No. The question is not high quality because it is not standards aligned. Specifically, the question does not address the math topic because it does not require any unit conversion as mentioned in the math topic.
+
+Example 20:
+
+Grade Level: 5
+
+Math Topic(s):
+1. Single-step multiplication of a whole number 12 or less with a proper fraction; the denominator of the fraction should be a factor of the whole number
+
+Question: A baker is making cookies for a school bake sale. She has 8 bags of flour, and each recipe calls for 2/4 of a bag of flour. How many recipes can the baker make with the flour she has?
+
+Solution:
+To find out how many recipes the baker can make, we need to multiply the number of bags of flour (8) by the fraction of a bag needed per recipe (2/4).
+First, we multiply 8 by 2.
+8 x 2 = 16
+So, we have 16/4.
+Now, we simplify the fraction 16/4 by dividing the numerator (16) by the denominator (4).
+16 / 4 = 4
+The final answer is 4. The baker can make 4 recipes.
+
+Is this question high quality?
+No. This question is not high quality because the solution is incorrect. Specifically, the solution multiplies 8 by 2/4 instead of dividing 8 by 2/4, which is the correct way to solve the problem. 
+
+Example 21:
+
+Grade Level: 5
+
+Math Topic(s):
+1. Determine the least common multiple of two numbers; may be used in the context of finding the least common denominator for two fractions
+
+Question: A bakery makes cookies and cakes. They put the cookies into boxes of 6 and the cakes into boxes of 8. If they want to ship out the same number of boxes of cookies and cakes, what is the smallest number of cookies and cakes they need to have in total?
+
+Solution:
+To find the smallest number of cookies and cakes the bakery needs to have in total, we need to find the least common multiple (LCM) of 6 and 8, since we want to have the same number of boxes of cookies and cakes.
+First, let's list the multiples of each number.
+The multiples of 6 are: 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96, 102, 108, 114, 120, and so on.
+The multiples of 8 are: 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, and so on.
+The smallest multiple that 6 and 8 have in common is 24.
+This means the smallest number of boxes they can have is 24 boxes, which would be 24 boxes of cookies and 24 boxes of cakes.
+To find the total number of cookies, we multiply 24 boxes by 6 cookies per box: 24 x 6 = 144 cookies.
+To find the total number of cakes, we multiply 24 boxes by 8 cakes per box: 24 x 8 = 192 cakes.
+To find the total number of cookies and cakes, we add the number of cookies and the number of cakes: 144 + 192 = 336.
+Therefore, the smallest number of cookies and cakes they need to have in total is 336.
+The final answer is 336.
+
+Is this question high quality?
+No. The question is not high quality because it is not educationally appropriate. Specifically, it does not require any math operations to solve because the bakery just needs to make the same number of boxes of cookies and cakes, which can be accomplished by making any equivalent number of boxes. The question should instead say they want to make the same number of cookies and cakes, which would require mathematical operations, specifically LCM, to solve.
+
+Example 22:
+
+Grade Level: 4
+
+Math Topics(s):
+1. Single-step and multistep addition and/or subtraction with decimals through the thousandths
+
+Question: Maria has $20.00 to spend at the school fair. She buys a stuffed animal for $7.50 and a game with a ticket price of $4.85. If each ticket costs $0.25, how much money will Maria have left after buying the stuffed animal and 10 tickets for the game?
+
+Solution: 
+To find out how much money Maria has left, we first need to calculate the total cost of the tickets. She buys 10 tickets at $0.25 each, so we need to multiply 10 by 0.25.
+10 x $0.25 = $2.50
+Then, we need to add the cost of the stuffed animal ($7.50) and the cost of the 10 tickets ($2.50) to find the total amount Maria spent.
+$7.50 + $2.50 = $10.00
+Now, we need to subtract the total amount she spent ($10.00) from the amount of money Maria had initially ($20.00).
+$20.00 - $10.00 = $10.00
+This means Maria has $10.00 left after buying the stuffed animal and 10 tickets for the game.
+The final answer is 10.00.
+
+Is this question high quality?
+No. This question is not high quality because it is educationally appropriate, as it contains conflicting information. Specifically, it defines the cost of tickets twice, which is conflicting and therefore makes the question confusing.
+
+Example 23: 
+
+Grade Level: 4
+
+Math Topic(s):
+1. Single-step division without remainders for a one-digit divisor and a two- or three-digit dividend
+
+Question: A baker is making cookies for a school event. She has 144 cookies and wants to put them into boxes with 8 cookies in each box. How many boxes can she fill, and will there be any cookies left over?
+
+Solution:
+To find out how many boxes the baker can fill, we need to divide the total number of cookies (144) by the number of cookies in each box (8).
+144 / 8 = 18
+This means the baker can fill 18 boxes with 8 cookies in each box.
+Since 18 * 8 = 144, there will be no cookies left over.
+The final answer is 18.
+
+Is this question high quality?
+No. The question is not high quality because the solution is not accurate. Specifically, the division has no remainder so there is no need to multiply 18 * 8 in the solution since we already know there will be no cookies left over. 
+
+Example 24:
+
+Grade Level: 3
+
+Math Topic(s):
+1. Identifying, describing, and/or extending patterns based on addition and subtraction of whole numbers
+
+Question: Lily is making friendship bracelets for her friends. She starts with 7 beads. Each day, she adds 3 more beads to her bracelet. If she makes bracelets for 5 days, how many beads will be on her bracelets in total?
+
+Solution:
+To find the total number of beads, we need to see the pattern of adding beads each day. 
+Lily starts with 7 beads, and adds 3 beads each day.
+Let's see how many beads she has each day:
+Day 1: 7 + 3 = 10 beads
+Day 2: 10 + 3 = 13 beads
+Day 3: 13 + 3 = 16 beads
+Day 4: 16 + 3 = 19 beads
+Day 5: 19 + 3 = 22 beads
+So, after 5 days, Lily will have 22 beads on her bracelets in total. 
+The final answer is 22.
+
+Is this question high quality?
+No. The question is not high quality because it is not educationally appropriate. Specifically, the question says Lily adds 3 beads to her bracelet (singular) every day but then later says she makes bracelets (plural) for 5 days, which conflicts with the one bracelet originally mentioned. This makes the question contain conflicting information; hence, it is not educationally appropriate.
+
+Example 25: 
+
+Grade Level: 5
+
+Math Topic(s):
+1. Single-step and multistep addition, subtraction, and/or multiplication of decimals
+2. Single-step division with decimals
+
+Question: A bakery is making cupcakes for a school event. They need to make 75 cupcakes in total. Each cupcake requires 0.25 cups of flour. If the bakery has 15.5 cups of flour available, how many cupcakes can they make?
+
+Solution:
+To find out how many cupcakes the bakery can make, we first need to determine how much flour each cupcake needs.
+Each cupcake requires 0.25 cups of flour.
+To find out how many cupcakes can be made with 15.5 cups of flour, we need to divide the total amount of flour available (15.5 cups) by the amount of flour needed per cupcake (0.25 cups).
+15.5 / 0.25 = 62
+This means the bakery can make 62 cupcakes with the available flour.
+The final answer is 62.
+
+Is this question high quality?
+No. The question is not high quality because it is not educationally appropriate. Specifically, the question is strange because the bakery does not have enough flour to make the required number of cupcakes (75).
+Now evaluate this word problem and remember to answer "Yes." or "No." followed by your reasoning.
+ <end_of_turn>
+<start_of_turn>model
