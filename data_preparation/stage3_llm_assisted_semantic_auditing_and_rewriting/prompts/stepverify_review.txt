@@ -1,0 +1,27 @@
+Audit this StepVerify record. The intended supervision is: locate a student's
+first erroneous step, describe the error, and provide a relevant tutoring
+continuation/correction.
+
+Important interpretation:
+
+- A marked step is acceptable when it is the first step that contains a
+  materially wrong assertion, setup, calculation, interpretation, or
+  conclusion.
+- Do not reject because an even more fine-grained root cause can be described.
+- A broad error category or missing optional error description is acceptable
+  if the error remains understandable.
+- Teacher feedback may probe, hint, focus attention, directly correct, or give
+  an analogous example. Do not enforce one preferred tutoring style.
+- Minor typos and awkward wording are not fatal.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): problem_reference_valid; marked_step_contains_material_error; marked_step_acceptable_as_first_error; error_annotation_usable; teacher_response_relevant; corrected_response_valid
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"problem_reference_valid": "yes|no", "marked_step_contains_material_error": "yes|no", "marked_step_acceptable_as_first_error": "yes|no", "error_annotation_usable": "yes|no", "teacher_response_relevant": "yes|no", "corrected_response_valid": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

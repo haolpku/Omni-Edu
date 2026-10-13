@@ -4,7 +4,7 @@
 
 **Curriculum-aware, multimodal models for the full K–12 learning–teaching loop.** OmniEdu brings together subject knowledge, curriculum alignment, learner diagnosis, and instructional support in three model scales: **4B, 9B, and 27B**, each available in **BF16 and FP8**.
 
-[📄 Paper (arXiv)](https://arxiv.org/abs/2609.23088) · [🌐 Project page](https://haolpku.github.io/Omni-Edu/) · [🤗 Models](#model-family) · [🤗 Dataset](https://huggingface.co/datasets/lhpku20010120/Omni-Edu)
+[📄 Paper (arXiv)](https://arxiv.org/abs/2609.23088) · [🌐 Project page](https://haolpku.github.io/Omni-Edu/) · [🤗 Models](#model-family) · [🤗 Dataset](https://huggingface.co/datasets/lhpku20010120/Omni-Edu) · [🛠️ Toolkit](#omniedu-toolkit)
 
 Hao Liang · Qihan Lin · Meiyi Qiang · Linzhuang Sun · Hengyi Feng · Mingrui Chen · Sizhe Qiu · Wentao Zhang<br>
 Peking University · University of the Chinese Academy of Sciences · Zhongguancun Academy
@@ -24,7 +24,7 @@ An educational model needs to connect **what is being taught, what the learner u
 | Diagnostic reasoning | Identify misconceptions, missing prerequisites, and gaps in learner understanding |
 | Pedagogical action and scaffolding | Give targeted feedback, ask guiding questions, explain, and adapt instructional support |
 
-The training mixture contains **69,999 instruction examples** and **15.96M supervised response tokens**, drawn from more than 100 sources: **60,951 education-specific examples** and **9,048 general-purpose examples**, with **20 task-specific system instructions**. The models use full-parameter supervised fine-tuning with a **32,768-token training sequence length**.
+The training mixture contains **69,999 instruction examples** and **15.96M supervised response tokens**, drawn from more than 100 sources: **60,951 education-specific examples** and **9,048 general-purpose examples**, with task-specific system instructions. The models use full-parameter supervised fine-tuning with a **32,768-token training sequence length**.
 
 ## Model family
 
@@ -267,7 +267,7 @@ Install a current vLLM release with Qwen3.5 support in a separate environment fr
 pip install -U vllm
 
 vllm serve lhpku20010120/Omni-Edu-4B \
-  --served-model-name omniedu \
+  --served-model-name omniedu-4b \
   --dtype bfloat16 \
   --tensor-parallel-size 1 \
   --max-model-len 32768 \
@@ -275,7 +275,7 @@ vllm serve lhpku20010120/Omni-Edu-4B \
   --default-chat-template-kwargs '{"enable_thinking": false}'
 ```
 
-Replace the model ID for 9B or 27B and set `--tensor-parallel-size` to the number of GPUs used for the model. Required GPU memory also depends on context length, concurrency, and vision inputs; reduce `--max-model-len` if needed. The serving configuration follows the [official vLLM Qwen3.5 guide](https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html).
+Replace the model ID for 9B or 27B and set `--tensor-parallel-size` to the number of GPUs used for the model. If you change the model size, also change `--served-model-name` to `omniedu-9b` or `omniedu-27b` so it matches the corresponding SDK alias. Required GPU memory also depends on context length, concurrency, and vision inputs; reduce `--max-model-len` if needed. The serving configuration follows the [official vLLM Qwen3.5 guide](https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html).
 
 #### Serve the pre-quantized FP8 weights
 
@@ -283,7 +283,7 @@ On a GPU/backend that supports block-wise FP8, launch the published FP8 checkpoi
 
 ```bash
 vllm serve lhpku20010120/Omni-Edu-4B-FP8 \
-  --served-model-name omniedu \
+  --served-model-name omniedu-4b \
   --dtype bfloat16 \
   --tensor-parallel-size 1 \
   --max-model-len 32768 \
@@ -291,7 +291,7 @@ vllm serve lhpku20010120/Omni-Edu-4B-FP8 \
   --default-chat-template-kwargs '{"enable_thinking": false}'
 ```
 
-Replace the ID with `lhpku20010120/Omni-Edu-9B-FP8` or `lhpku20010120/Omni-Edu-27B-FP8` as needed. vLLM reads the checkpoint's `compressed-tensors` quantization configuration automatically; `--dtype bfloat16` sets the compute dtype for unquantized components and does not convert the stored FP8 weights to BF16. Set GPU parallelism and context length to fit your hardware. Both BF16 and FP8 servers use the same API request below.
+Replace the ID with `lhpku20010120/Omni-Edu-9B-FP8` or `lhpku20010120/Omni-Edu-27B-FP8` as needed, and update the served model name accordingly. vLLM reads the checkpoint's `compressed-tensors` quantization configuration automatically; `--dtype bfloat16` sets the compute dtype for unquantized components and does not convert the stored FP8 weights to BF16. Set GPU parallelism and context length to fit your hardware. Both BF16 and FP8 servers use the same API request below.
 
 Query the running server from another terminal:
 
@@ -299,7 +299,7 @@ Query the running server from another terminal:
 curl http://localhost:8000/v1/chat/completions \
   -H 'Content-Type: application/json' \
   -d '{
-    "model": "omniedu",
+    "model": "omniedu-4b",
     "messages": [{"role": "user", "content": "Help a student solve x^2 - 5x + 6 = 0. Start with a hint."}],
     "temperature": 0.2,
     "max_tokens": 512,
@@ -327,6 +327,53 @@ print(train)
 ```
 
 The dataset covers curriculum grounding, problem solving, diagnosis, tutoring, and general instruction. Please follow the licenses and usage terms of the component datasets and source materials.
+
+## Code
+
+This repository includes the data preparation and training code, along with a Python toolkit for using and evaluating OmniEdu models.
+
+| Directory | Description |
+| --- | --- |
+| [`data_preparation/`](data_preparation/) | Six-stage data preparation pipeline, from source collection to the final instruction dataset |
+| [`training/`](training/) | Full-parameter supervised fine-tuning of the 4B, 9B, and 27B models using LLaMA-Factory |
+| [`sdk/`](sdk/) | The `omniedu` toolkit for model inference, multimodal chat, teaching instructions, batch processing, and benchmark evaluation |
+
+### OmniEdu toolkit
+
+The [`omniedu` Python package](https://pypi.org/project/omniedu/) provides a unified interface for OmniEdu models and other models served through OpenAI-compatible APIs. Its evaluation suite supports **12 educational and general-purpose benchmarks**, with tools for scoring open-ended responses and generating Markdown comparison tables.
+
+Install from PyPI:
+
+```bash
+pip install omniedu
+```
+
+With the 4B vLLM service launched above, you can make a request through the SDK:
+
+```python
+from omniedu import OmniEdu
+
+model = OmniEdu.from_pretrained("4B", base_url="http://127.0.0.1:8000/v1")
+response = model.chat(text="Help a student solve x^2 - 5x + 6 = 0. Start with a hint.")
+print(response.text)
+```
+
+To explore the evaluation suite:
+
+```bash
+pip install "omniedu[eval]"
+omniedu eval --list
+```
+
+See the **[toolkit README](sdk/README.md)** for image inputs, task-specific instructions, JSONL batch inference, evaluation of your own models, and report generation. Benchmark datasets and upstream code must be obtained separately where required.
+
+For training, see the **[training README](training/README.md)**. To inspect the configuration without launching a run:
+
+```bash
+bash training/run_training.sh 9b --dry-run
+```
+
+The code is licensed under Apache-2.0. Model weights and third-party datasets and benchmarks retain their respective licenses.
 
 ## Intended use and limitations
 

@@ -1,0 +1,19 @@
+Audit this MultiHint record. The intended supervision is a hint that helps
+answer a question using the supplied passage.
+
+The record does not need to be strictly K-12 if it is a coherent school-subject
+or general-knowledge reading task. Do not reject merely because it concerns
+history, geography, biography, culture, or an applied context. Reject or review
+primarily for unusable hint supervision.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): passage_supports_answer; hint_relevant; hint_factually_supported; hint_avoids_direct_answer_leakage; language_consistent; educationally_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"passage_supports_answer": "yes|no", "hint_relevant": "yes|no", "hint_factually_supported": "yes|no", "hint_avoids_direct_answer_leakage": "yes|no", "language_consistent": "yes|no", "educationally_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

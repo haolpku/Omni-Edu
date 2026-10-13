@@ -1,0 +1,17 @@
+Audit this TMATH math problem, solution, and existing Socratic question list.
+Check that the problem/solution are mathematically correct and that the
+Socratic questions are relevant steps or conceptual prompts toward the
+solution. Questions may be broad or include real-life reflection; minor
+redundancy is acceptable. Do not require them to reveal every calculation.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): problem_solution_valid; socratic_questions_relevant; socratic_sequence_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"problem_solution_valid": "yes|no", "socratic_questions_relevant": "yes|no", "socratic_sequence_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

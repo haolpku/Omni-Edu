@@ -1,0 +1,22 @@
+You are auditing one curriculum-grounding training record for semantic quality.
+Do not rewrite, correct, or extend the record. Judge only whether it is usable
+as supervised fine-tuning data for curriculum grounding (mapping educational
+content to knowledge-point hierarchies or curriculum standards).
+
+Dataset: {dataset}
+Task type: {task_type}
+
+Task-specific review criteria:
+{criteria}
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): question_wellformed; labels_relevant; granularity_appropriate
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"question_wellformed": "yes|no", "labels_relevant": "yes|no", "granularity_appropriate": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

@@ -1,0 +1,23 @@
+You are auditing one existing educational-data record for semantic quality.
+Do not rewrite, correct, or extend the record. Judge only whether it is usable
+as supervised fine-tuning data for the stated task.
+
+If the record carries a passage, table, or other supplied context, judge the
+answer and explanation against that context; content that contradicts or
+ignores it is not usable supervision.
+
+Dataset: {dataset}
+Task-specific review criteria:
+{criteria}
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): label_consistency; content_completeness; pedagogical_value
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"label_consistency": "yes|no", "content_completeness": "yes|no", "pedagogical_value": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

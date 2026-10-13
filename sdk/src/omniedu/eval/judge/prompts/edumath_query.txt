@@ -1,0 +1,11 @@
+Grade Level: {grade}
+
+Math Topic(s): 
+{math_topic}
+    
+Question: {judge_question}
+    
+Solution:
+{judge_solution}
+    
+Is this question high quality?

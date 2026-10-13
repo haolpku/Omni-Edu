@@ -1,0 +1,17 @@
+Audit this educational dialogue. Check subject-matter correctness, coherent
+turn progression, and whether tutor/teacher responses are educationally useful.
+Direct correction, hints, probing, and praise are all allowed. Minor repetition,
+awkward language, or generic praise are not fatal unless they dominate or
+reinforce incorrect content.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): subject_content_valid; dialogue_coherent; tutor_responses_usable; final_state_not_incorrect
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"subject_content_valid": "yes|no", "dialogue_coherent": "yes|no", "tutor_responses_usable": "yes|no", "final_state_not_incorrect": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

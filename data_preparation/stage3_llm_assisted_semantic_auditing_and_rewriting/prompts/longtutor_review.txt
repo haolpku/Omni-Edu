@@ -1,0 +1,17 @@
+Audit this LongTutor longitudinal tutoring annotation. Check that the diagnosis,
+reason, strategy, and tutor content are supported by the student's history and
+current question/response. Gold and Silver are both allowed; do not reject
+solely for being Silver. Memory questions may contain "Unknown" when evidence
+is unavailable. Do not require a single ideal teaching style.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): history_current_state_coherent; diagnosis_supported; strategy_and_reason_usable; tutor_content_relevant
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"history_current_state_coherent": "yes|no", "diagnosis_supported": "yes|no", "strategy_and_reason_usable": "yes|no", "tutor_content_relevant": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

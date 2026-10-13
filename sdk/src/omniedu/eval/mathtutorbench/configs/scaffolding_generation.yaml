@@ -1,0 +1,14 @@
+name: scaffolding_generation
+dataset_path: datasets/mathdial_bridge_clean.json
+dataset_name: main
+training_split: train
+test_split: test
+system_prompt: |
+  You are an experienced math teacher and you are going to respond to a student in a useful and caring way. The student is trying to solve the following problem.
+  Problem: {{question}}
+  Conversation:
+  {{dialog_history}}
+  Teacher (maximum two sentences): 
+ground_truth_format: ""
+few_shot_samples: ""
+stop: ["Student:", "\n\n", "Teacher:"]

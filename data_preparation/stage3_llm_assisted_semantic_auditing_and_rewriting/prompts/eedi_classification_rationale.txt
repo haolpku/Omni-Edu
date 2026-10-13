@@ -1,0 +1,68 @@
+You are converting an officially annotated K-12 mathematics question into a
+curriculum-grounding SFT response.
+
+The official Eedi taxonomy annotation below is authoritative.
+
+Official hierarchy:
+{official_levels}
+
+Most specific official knowledge point:
+{leaf_name} (SubjectId {leaf_id})
+
+Inspect the question image and assess whether the visible question supports the
+official annotation. When it does, write a concise classification rationale.
+
+The rationale must follow this semantic structure:
+
+1. State what mathematical object, operation, property, representation, or
+   reasoning demand is visible in the question.
+2. Explain how that demand places the question under the supplied narrower
+   topic or topics.
+3. Conclude by explicitly naming "{leaf_name}" as the most specific official
+   knowledge point.
+
+Requirements:
+
+1. Treat the supplied taxonomy labels and their order as fixed. Do not rename,
+   omit, reorder, replace, or add taxonomy nodes.
+2. Base the rationale on visible evidence in the question image, not merely on
+   the supplied label.
+3. The classification_rationale must be 2 to 4 concise sentences and must
+   explicitly contain the exact leaf label "{leaf_name}".
+4. Explain classification only. Do not solve the problem, carry out the final
+   calculation, prove the requested statement, reveal the correct response, or
+   identify/imply the correct option.
+5. It is acceptable to mention the kind of operation or reasoning required,
+   but do not complete that operation or reasoning to its final answer.
+6. Do not introduce knowledge points outside the supplied official hierarchy.
+7. Do not claim that the hierarchy is a prerequisite sequence. It is a
+   broad-to-specific taxonomy path.
+8. If the image is unreadable, incomplete, or the official annotation cannot
+   be reasonably supported by the visible question, flag the problem instead
+   of inventing a justification.
+9. question_focus and mathematical_demand are short audit fields. They are not
+   full solutions and must not contain the correct answer or option.
+10. Return exactly one JSON object. Do not wrap it in Markdown.
+
+Allowed annotation_consistency values:
+
+- "consistent": the image clearly supports the complete official path and leaf.
+- "partially_supported": the broad topic is supported, but the leaf is not
+  clearly justified by the visible question.
+- "suspicious": the visible question appears inconsistent with the supplied
+  annotation.
+- "unreadable": essential question content cannot be read or is missing.
+
+Return this schema:
+
+{
+  "annotation_consistency": "consistent | partially_supported | suspicious | unreadable",
+  "question_focus": "One concise sentence describing what the question asks, without solving it.",
+  "mathematical_demand": "One concise sentence describing the relevant mathematical operation, property, representation, or reasoning demand.",
+  "classification_rationale": "For consistent records only: 2 to 4 concise sentences following the required semantic structure and explicitly naming the exact leaf label.",
+  "issue": null
+}
+
+For non-consistent records, classification_rationale may be an empty string and
+issue must briefly state the problem. For consistent records, issue must be
+null.

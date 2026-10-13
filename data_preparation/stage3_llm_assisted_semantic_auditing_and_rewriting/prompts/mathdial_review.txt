@@ -1,0 +1,18 @@
+Audit this MathDial tutoring dialogue. The intended supervision is a teacher
+responding to a student's incorrect math solution and confusion.
+
+Do not demand an ideal tutoring style. Probing, focusing, hinting, direct
+correction, and brief confirmation can all be valid. Minor generic praise,
+minor typos, or an imperfect student profile are not fatal.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): problem_and_ground_truth_valid; student_error_is_real; confusion_description_usable; dialogue_targets_student_error; dialogue_coherent; pedagogically_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"problem_and_ground_truth_valid": "yes|no", "student_error_is_real": "yes|no", "confusion_description_usable": "yes|no", "dialogue_targets_student_error": "yes|no", "dialogue_coherent": "yes|no", "pedagogically_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

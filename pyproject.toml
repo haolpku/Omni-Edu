@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 100
+extend-exclude = '''
+/(
+    \.git
+  | legacy_releases
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line-length = 100
+skip_glob = ["*/legacy_releases/*"]

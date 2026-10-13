@@ -1,0 +1,17 @@
+Audit this existing EduAdapt QA/MCQ record. Check factual support, internal
+consistency, and broad grade appropriateness. Do not demand perfect curriculum
+alignment or sophisticated pedagogy. Simple questions for young grades and
+concise answers are acceptable. Model-generated provenance alone is not a
+defect.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): question_answer_valid; context_supports_answer_or_not_needed; subject_assignment_usable; grade_level_broadly_appropriate
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"question_answer_valid": "yes|no", "context_supports_answer_or_not_needed": "yes|no", "subject_assignment_usable": "yes|no", "grade_level_broadly_appropriate": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

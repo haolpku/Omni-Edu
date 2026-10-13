@@ -1,0 +1,21 @@
+Audit a TalkMoves classification record. The label_id is an existing source
+class ID; do not invent a label-name mapping not provided in the record.
+
+Only judge whether the utterance is a usable classroom discourse instance for
+the stated task and whether the optional opposite-role context is coherent.
+Do not mark the label wrong merely because its verbal class name is absent.
+Short utterances, greetings, classroom management, or incomplete sentence
+fragments may still be valid source instances, though low educational signal
+can be noted.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): utterance_complete_enough; role_and_task_consistent; context_coherent_or_not_needed; classification_instance_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"utterance_complete_enough": "yes|no", "role_and_task_consistent": "yes|no", "context_coherent_or_not_needed": "yes|no", "classification_instance_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

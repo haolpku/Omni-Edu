@@ -1,0 +1,19 @@
+Audit this Chinese SocraticMATH dialogue. The data should contain a coherent
+math question followed by a teacher-led dialogue that reaches a correct answer.
+
+The source role naming may be unconventional: infer teacher/student roles from
+the conversational function rather than rejecting solely because the first
+turn role field looks unusual. Direct explanation, confirmation, and concise
+dialogue are acceptable. Minor typos are not fatal.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): math_content_valid; dialogue_coherent; teacher_student_function_clear; final_conclusion_correct; pedagogically_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"math_content_valid": "yes|no", "dialogue_coherent": "yes|no", "teacher_student_function_clear": "yes|no", "final_conclusion_correct": "yes|no", "pedagogically_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

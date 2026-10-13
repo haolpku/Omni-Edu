@@ -1,0 +1,19 @@
+Audit one OATutor step containing a question, existing answer/options, and
+existing hint/scaffold text. The intended supervision is tutoring support.
+
+Check that at least one hint or scaffold is relevant and pedagogically usable,
+that answers/options are internally coherent when present, and that the content
+is understandable. Hints may be direct, concise, or Socratic. Higher-school or
+college-level OpenStax content is acceptable for this dataset.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): question_answer_coherent; at_least_one_hint_or_scaffold_relevant; pedagogical_content_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"question_answer_coherent": "yes|no", "at_least_one_hint_or_scaffold_relevant": "yes|no", "pedagogical_content_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

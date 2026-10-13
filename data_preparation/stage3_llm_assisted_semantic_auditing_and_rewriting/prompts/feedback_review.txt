@@ -1,0 +1,21 @@
+Audit an existing educational feedback record. Check that the feedback is
+relevant to the supplied prompt, essay context, student action, or anchor when
+available; factually safe; and not empty or abusive. The source may contain
+authentic lightweight instructor marginal comments. Brief praise, a short
+question ("specifically?"), emojis, image comments, and comments referring to
+revision history can be valid pedagogical signals even when they are not
+self-contained or highly actionable. Do not require every comment to teach a
+complete revision strategy. Mark context incomplete only when the feedback
+cannot plausibly attach to the available essay/anchor or source metadata.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): feedback_relevant; feedback_factually_safe; feedback_actionable_or_useful; context_complete_enough
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"feedback_relevant": "yes|no", "feedback_factually_safe": "yes|no", "feedback_actionable_or_useful": "yes|no", "context_complete_enough": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

@@ -1,0 +1,23 @@
+Audit this synthetic K-12 teacher-student dialogue. The dataset intentionally
+models mismatched teacher/student learning preferences and may include teacher
+frustration, imperfect adaptation, or an initially ineffective teaching move.
+Those behaviors are part of the pedagogical-action data and are not fatal by
+themselves.
+
+Check only: factual subject correctness; whether the dialogue remains logically
+followable; whether it provides a usable example of a pedagogical response or
+adaptation (including a negative/ineffective example); and whether the final
+claims avoid affirming false knowledge. Do not require an ideal tutor, full
+mastery, or a positive outcome.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): subject_content_valid; dialogue_coherent; pedagogical_behavior_observable; final_state_not_factually_wrong
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"subject_content_valid": "yes|no", "dialogue_coherent": "yes|no", "pedagogical_behavior_observable": "yes|no", "final_state_not_factually_wrong": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

@@ -1,0 +1,4 @@
+{"id": "q001", "text": "求解 x^2 - 5x + 6 = 0，并给出最终答案。"}
+{"id": "q002", "text": "As shown in the figure, find the area of the shaded region.", "images": ["page.png"]}
+{"id": "q003", "messages": [{"role": "user", "content": "为什么两个偶数之和一定是偶数？"}], "task": "direct_explanation"}
+

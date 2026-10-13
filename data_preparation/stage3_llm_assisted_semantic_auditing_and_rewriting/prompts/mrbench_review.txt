@@ -1,0 +1,16 @@
+Audit this tutoring next-turn record. Check that the problem/reference are
+valid, the dialogue history is coherent, and the positive teacher response is
+relevant to the student's current reasoning and preferable as a tutoring
+response. The negative response is metadata and need not be evaluated as gold.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): problem_reference_valid; dialogue_history_coherent; positive_teacher_response_relevant; pedagogically_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"problem_reference_valid": "yes|no", "dialogue_history_coherent": "yes|no", "positive_teacher_response_relevant": "yes|no", "pedagogically_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

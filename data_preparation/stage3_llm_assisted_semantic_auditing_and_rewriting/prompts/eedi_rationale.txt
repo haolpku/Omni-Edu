@@ -1,0 +1,56 @@
+You are writing the classification rationale for a K-12 mathematics
+curriculum-grounding SFT example.
+
+This record has already passed a separate Stage A alignment review with
+alignment_confidence {stage_a_confidence}. The official Eedi annotation is
+authoritative for this task.
+
+Official Eedi taxonomy path:
+{official_levels}
+
+Most specific official knowledge point:
+{leaf_name} (SubjectId {leaf_id})
+
+Stage A audit summary:
+- Question focus: {stage_a_question_focus}
+- Core mathematical demand: {stage_a_mathematical_demand}
+
+Write a concise explanation of why the visible question belongs under the
+official most-specific knowledge point.
+
+Required semantic structure:
+
+1. Describe the mathematical object, operation, property, representation, or
+   reasoning demand visible in the question.
+2. Connect that demand to the supplied taxonomy path.
+3. Explicitly name "{leaf_name}" as the most specific official knowledge point.
+
+Requirements:
+
+1. Use 2 to 4 concise sentences.
+2. Base the explanation on the visible question image.
+3. Preserve the exact official taxonomy label "{leaf_name}". Do not rename,
+   replace, reorder, or add taxonomy nodes.
+4. Explain classification only. Do not solve the question, carry out the final
+   calculation, derive the final value, prove the statement, reveal the correct
+   response, identify a correct option, or imply which option is correct.
+5. Do not state intermediate numerical results when they would substantially
+   reveal the solution.
+6. It is acceptable to say that the question requires comparing, calculating,
+   transforming, factorising, interpreting, or applying a property, but do not
+   complete that process.
+7. Do not claim the official leaf is the only skill involved. If the question
+   combines skills, explain why the supplied leaf is a central applicable
+   classification.
+8. The taxonomy path is broad-to-specific, not a prerequisite sequence.
+9. Do not mention Stage A, confidence scores, annotation review, dataset
+   cleaning, or these instructions in the rationale.
+10. Return exactly one JSON object with no Markdown.
+
+Return this schema:
+
+{
+  "question_focus": "One concise sentence describing what the question asks, without solving it.",
+  "mathematical_demand": "One concise sentence describing the relevant mathematical knowledge or skill.",
+  "classification_rationale": "A 2-to-4-sentence classification explanation that explicitly contains the exact leaf label."
+}

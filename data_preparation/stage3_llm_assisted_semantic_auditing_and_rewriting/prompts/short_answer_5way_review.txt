@@ -1,0 +1,30 @@
+Audit a short-answer assessment record with a five-way label.
+
+Label meanings:
+- correct: student answer fully expresses the required idea.
+- partially_correct_incomplete: contains a correct relevant idea but omits an
+  essential part.
+- contradictory: directly conflicts with the reference or core science fact.
+- irrelevant: does not answer the question or is unrelated.
+- non_domain: cannot be meaningfully assessed in the expected subject domain.
+
+Allow paraphrases, concise answers, and wording different from the reference.
+Do not require exact lexical overlap. Judge whether the existing label is
+reasonable; minor borderline ambiguity is acceptable.
+
+When the record carries a passage (reading comprehension items such as RACE,
+C3, TQA and WorldTree), judge the label against that passage: a student answer
+is correct only if the passage supports it, and a reference that contradicts
+the passage makes the record invalid.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): question_reference_valid; student_answer_assessable; assigned_label_reasonable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"question_reference_valid": "yes|no", "student_answer_assessable": "yes|no", "assigned_label_reasonable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

@@ -1,0 +1,17 @@
+Audit this Bridge tutoring-strategy record. Check whether the stated student
+error is supported by the history, whether the expert revised response is a
+reasonable improvement or pedagogical action for that state, and whether the
+strategy/intention fields are broadly consistent. Generic encouragement can be
+valid when no student error is present.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): student_error_annotation_usable; expert_revision_relevant; strategy_intention_usable; dialogue_context_coherent
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"student_error_annotation_usable": "yes|no", "expert_revision_relevant": "yes|no", "strategy_intention_usable": "yes|no", "dialogue_context_coherent": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

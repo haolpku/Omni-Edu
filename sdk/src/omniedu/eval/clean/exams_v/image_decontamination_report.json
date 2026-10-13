@@ -1,0 +1,8 @@
+{
+  "benchmark": "EXAMS-V",
+  "total": 4797,
+  "kept": 4797,
+  "removed_image_sha256_overlap": 0,
+  "split": "official HF test",
+  "note": "question rendered in image; exact image SHA256 checked"
+}

@@ -1,0 +1,22 @@
+Audit this CIMA record. It contains a tutoring history, Italian grounding, and
+multiple candidate tutor responses. The intended use is pedagogical action
+supervision, not necessarily treating every candidate as equally good.
+
+Judge whether the record contains at least one tutor candidate that is
+factually consistent with the supplied grounding, relevant to the final
+student turn, and pedagogically usable. Other candidates may be weak or wrong;
+report their indices but do not remove the whole record if a usable candidate
+exists. Minor accented-character inconsistencies (e/è) and minor typos should
+not alone make the whole record unusable unless they change the taught rule.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): dialogue_context_coherent; grounding_usable; usable_candidate_indices; bad_candidate_indices; at_least_one_usable_candidate
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"dialogue_context_coherent": "yes|no", "grounding_usable": "yes|no", "usable_candidate_indices": "yes|no", "bad_candidate_indices": "yes|no", "at_least_one_usable_candidate": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

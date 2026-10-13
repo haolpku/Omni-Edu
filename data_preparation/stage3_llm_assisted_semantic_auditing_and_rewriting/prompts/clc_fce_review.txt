@@ -1,0 +1,21 @@
+Audit this official learner-English error/correction annotation. Check that the
+learner_error span and correction form a plausible grammatical, lexical,
+orthographic, or word-order edit for the error_type and operation. In this
+release, `replacement` is a technical span-edit operation: it may replace a
+phrase with a reordered version of the same words, so transposition/word-order
+corrections are valid replacements. Insertions and deletions may have an empty
+learner_error or correction by design. Do not require a full sentence
+explanation or reject an official edit merely because a more specific operation
+name could be imagined.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): edit_operation_coherent; correction_plausible; error_type_broadly_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"edit_operation_coherent": "yes|no", "correction_plausible": "yes|no", "error_type_broadly_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

@@ -1,0 +1,18 @@
+Audit this ScratchMath diagnostic record. Check that the official solution and
+answer are coherent, the student answer is actually wrong when an error is
+claimed, and the error explanation plausibly describes the student's mistake.
+The scratchwork image is referenced separately; do not require it when the
+question, answers, solution, and explanation already make the diagnosis
+verifiable. Minor wording or broad error categories are acceptable.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): problem_solution_valid; student_answer_diagnostic_valid; error_explanation_usable; image_required_for_verification
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"problem_solution_valid": "yes|no", "student_answer_diagnostic_valid": "yes|no", "error_explanation_usable": "yes|no", "image_required_for_verification": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

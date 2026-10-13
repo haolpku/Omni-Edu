@@ -1,0 +1,243 @@
+{
+  "name": "Omni-Edu benchmark evaluation",
+  "version": "2026-10-10",
+  "paper": "Omni-Edu: Open Foundation Models for Learning and Teaching",
+  "conventions": {
+    "code": "Upstream benchmark code is never vendored. Clone each repository and point the run at it with --official-root BENCH=PATH (or the benchmark's own --repo/--official-root flag).",
+    "data": "Benchmark inputs are not redistributed. Put them under the data root (--data-root, default evaluation_data/) in the layout each entry lists under `data`.",
+    "judge": "Subjective benchmarks are graded by omniedu.eval.judge; the judge model and its prompt are part of the protocol, not an implementation detail.",
+    "deviations": "Temperature is fixed at 0.0 everywhere per the paper's protocol (upstream GAOKAO objective 0.3, MathFish unset/0.2, MMMU-Pro unset). GAOKAO subjective is judged with gpt-4.1-mini instead of upstream's gpt-4-1106-preview. MDK12 objective is scored deterministically. LongTutor metrics are split into a deterministic stage and a judged stage."
+  },
+  "entries": [
+    {
+      "name": "K12-Bench",
+      "group": "curriculum_grounding",
+      "module": "omniedu.eval.benchmarks.k12bench",
+      "data": ["k12_bench"],
+      "subtasks": ["ground", "prereq", "neighbor", "evidence", "locate"],
+      "metrics": ["EM", "F1"],
+      "scoring": "official eval_multiselect.py (EM/F1)",
+      "judge": null,
+      "paper_table": 11,
+      "upstream": {
+        "code": "https://github.com/haolpku/K12-KGraph",
+        "data": "https://huggingface.co/datasets/lhpku20010120/K12-KGraph",
+        "license": "code MIT, data CC BY-NC-SA 4.0",
+        "drives": "official/eval/eval_multiselect.py"
+      }
+    },
+    {
+      "name": "MathFish",
+      "group": "curriculum_grounding",
+      "module": "omniedu.eval.benchmarks.mathfish",
+      "data": ["mathfish"],
+      "task_format": "verification",
+      "metrics": ["Pos: Should Yes", "Neg: ATC Neighbor", "Neg: Same-domain", "Neg: Diff-domain", "Overall Acc"],
+      "scoring": "official scripts/eval.py --task_format verification",
+      "judge": null,
+      "paper_table": 12,
+      "upstream": {
+        "code": "https://github.com/allenai/mathfish",
+        "data": "https://huggingface.co/datasets/allenai/mathfish (+ allenai/achieve-the-core for the standards)",
+        "license": "Apache-2.0 (code), ODC-By (data)",
+        "drives": "official/scripts/eval.py"
+      }
+    },
+    {
+      "name": "EDUMATH",
+      "group": "curriculum_grounding",
+      "module": "omniedu.eval.benchmarks.edumath",
+      "data": ["edumath/stem.csv", "edumath/annotated_data.csv"],
+      "metrics": ["Format Pass", "Classifier GOOD", "MaC"],
+      "scoring": "official MaC classifier (and the LLM judge for MaC)",
+      "judge": {
+        "required_for": "mac",
+        "model": "gpt-4.1-mini",
+        "temperature": 0.0,
+        "max_tokens": 2048,
+        "prompt": "judge/prompts/edumath_official.txt",
+        "user_template": "judge/prompts/edumath_query.txt",
+        "schema": "edumath_official",
+        "runner": "omniedu.eval.judge.judge_gaokao_edumath"
+      },
+      "paper_table": 13,
+      "upstream": {
+        "code": "https://github.com/bryanchrist/EDUMATH",
+        "data": "https://huggingface.co/datasets/bryanchrist/EDUMATH (+ bryanchrist/EDUMATH_classifier and answerdotai/ModernBERT-large)",
+        "license": "GPL-3.0",
+        "note": "the classifier stage replicates the official annotate.py path and needs no clone at runtime"
+      }
+    },
+    {
+      "name": "GAOKAO-Bench",
+      "group": "problem_solving",
+      "module": "omniedu.eval.benchmarks.gaokao",
+      "data": [],
+      "metrics": ["Obj Rate", "Subj Rate", "Full Rate", "per-subject rate"],
+      "scoring": "local for objective, official judge for subjective",
+      "judge": {
+        "required_for": "subjective",
+        "model": "gpt-4.1-mini",
+        "temperature": 0.0,
+        "max_tokens": 1024,
+        "prompt": "judge/prompts/gaokao_subject_prompts.json",
+        "user_template": "judge/prompts/gaokao_query.txt",
+        "schema": "gaokao_subjective_official",
+        "runner": "omniedu.eval.judge.judge_gaokao_edumath"
+      },
+      "paper_table": 14,
+      "upstream": {
+        "code": "https://github.com/OpenLMLab/GAOKAO-Bench",
+        "data": "in the same repository (Data/Objective_Questions, Data/Subjective_Questions)",
+        "license": "Apache-2.0",
+        "drives": "official/Bench/Obj_Prompt.json, Sub_Prompt.json and OBJ_score_evaluation.py"
+      }
+    },
+    {
+      "name": "EXAMS-V",
+      "group": "problem_solving",
+      "module": "omniedu.eval.benchmarks.exams_v",
+      "data": ["exams_v/data"],
+      "metrics": ["Overall", "Text", "Image+Text", "Natural Science", "Social Sciences", "Other", "Chinese", "English"],
+      "scoring": "local exact-label protocol",
+      "judge": null,
+      "paper_table": 15,
+      "upstream": {
+        "code": "https://github.com/RocktimJyotiDas/EXAMS-V",
+        "code_note": "the repository ships README and figures only; upstream publishes no evaluation runner",
+        "data": "https://huggingface.co/datasets/Rocktim/EXAMS-V",
+        "paper": "https://arxiv.org/abs/2403.10378"
+      }
+    },
+    {
+      "name": "MDK12-Bench",
+      "group": "problem_solving",
+      "module": "omniedu.eval.benchmarks.mdk12",
+      "data": [],
+      "metrics": ["Single-choice", "Multiple-choice", "True/False", "Objective Avg", "Open Correctness", "Full Overall"],
+      "scoring": "local for objective, judge for open-ended",
+      "judge": {
+        "required_for": "fill_in_the_blank+calculation",
+        "model": "gpt-4.1-mini",
+        "temperature": 0.0,
+        "max_tokens": 1024,
+        "task": "mdk12",
+        "runner": "omniedu.eval.judge.judge_mdk12_tutorbench"
+      },
+      "paper_table": 16,
+      "upstream": {
+        "code": "https://github.com/LanceZPF/MDK12",
+        "data": "in the same repository (MDK12mini-easy/medium/hard/*.tsv)",
+        "drives": "official quick-inference system prompt"
+      }
+    },
+    {
+      "name": "MathTutorBench",
+      "group": "pedagogical_tutoring",
+      "module": "omniedu.eval.benchmarks.mathtutorbench",
+      "data": ["mathtutorbench/Qwen2.5-1.5B-pedagogical-rewardmodel"],
+      "tasks": ["scaffolding_generation", "scaffolding_generation_hard", "pedagogy_following", "pedagogy_following_hard"],
+      "metrics": ["Scaffold WR", "Scaffold-hard WR", "Pedagogy WR", "Pedagogy-hard WR"],
+      "scoring": "official pedagogical reward model (local)",
+      "judge": null,
+      "paper_table": 17,
+      "upstream": {
+        "code": "https://github.com/eth-lre/mathtutorbench",
+        "data": "in the same repository (datasets/); the official reward model is published by the benchmark authors",
+        "license": "CC BY 4.0",
+        "drives": "official/main.py + official/reward_model/compute_scaffolding_score.py"
+      }
+    },
+    {
+      "name": "TutorBench",
+      "group": "pedagogical_tutoring",
+      "module": "omniedu.eval.benchmarks.tutorbench",
+      "data": ["tutorbench"],
+      "metrics": ["UC1/UC2/UC3 by modality", "Text", "Multimodal", "Overall"],
+      "scoring": "rubric judge",
+      "judge": {
+        "required_for": "all",
+        "model": "gpt-4.1-mini",
+        "temperature": 0.0,
+        "max_tokens": 6144,
+        "task": "tutorbench",
+        "runner": "omniedu.eval.judge.judge_mdk12_tutorbench"
+      },
+      "paper_table": 18,
+      "upstream": {
+        "code": "no public evaluation runner found (Scale AI publishes the dataset and the rubric definitions)",
+        "data": "https://huggingface.co/datasets/ScaleAI/TutorBench",
+        "paper": "https://arxiv.org/abs/2510.02663"
+      }
+    },
+    {
+      "name": "LongTutor",
+      "group": "pedagogical_tutoring",
+      "module": "omniedu.eval.benchmarks.longtutor",
+      "data": ["longtutor"],
+      "metrics": ["Evidence IE/MR/HC/Avg", "Diagnosis Acc/F1", "Teaching R-L/Hist./Strat./Coher./Appr./Avg."],
+      "scoring": "deterministic metrics + teaching-quality judge",
+      "judge": {
+        "required_for": "teaching_quality",
+        "model": "gpt-4.1-mini",
+        "temperature": 0.0,
+        "max_tokens": 1024,
+        "runner": "omniedu.eval.judge.judge_longtutor"
+      },
+      "paper_table": 19,
+      "upstream": {
+        "code": "https://github.com/liano3/LongTutor",
+        "data": "in the same repository",
+        "note": "the runner imports the official prompt builders so prompts and diagnosis labels cannot drift"
+      }
+    },
+    {
+      "name": "IFEval",
+      "group": "general_capability",
+      "module": "omniedu.eval.benchmarks.ifeval",
+      "data": ["ifeval/ifeval_input_data.jsonl"],
+      "metrics": ["Prompt Strict", "Inst. Strict", "Prompt Loose", "Inst. Loose"],
+      "scoring": "official google-research/ifeval scoring code",
+      "judge": null,
+      "paper_table": 20,
+      "upstream": {
+        "code": "https://github.com/google-research/google-research (ifeval/, Apache-2.0)",
+        "data": "https://huggingface.co/datasets/google/IFEval",
+        "license": "Apache-2.0",
+        "runtime_deps": "pip install langdetect immutabledict nltk"
+      }
+    },
+    {
+      "name": "GPQA",
+      "group": "general_capability",
+      "module": "omniedu.eval.benchmarks.gpqa",
+      "data": ["gpqa"],
+      "metrics": ["Main Acc.", "Diamond Acc."],
+      "scoring": "official regex parser",
+      "judge": null,
+      "paper_table": 21,
+      "upstream": {
+        "code": "https://github.com/idavidrein/gpqa (MIT)",
+        "data": "https://huggingface.co/datasets/Idavidrein/gpqa (gated)",
+        "license": "MIT (code); gated terms (data)",
+        "note": "the runner is a faithful port of the official two-stage closed-book CoT path"
+      }
+    },
+    {
+      "name": "MMMU-Pro",
+      "group": "general_capability",
+      "module": "omniedu.eval.benchmarks.mmmu_pro",
+      "data": ["mmmu_pro/standard (10 options)"],
+      "metrics": ["Overall", "Art", "Business", "Science", "Health", "Humanities", "Tech."],
+      "scoring": "official parse_multi_choice_response",
+      "judge": null,
+      "paper_table": 22,
+      "upstream": {
+        "code": "https://github.com/MMMU-Benchmark/MMMU (Apache-2.0)",
+        "data": "https://huggingface.co/datasets/MMMU/MMMU_Pro (standard 10-options split)",
+        "license": "Apache-2.0 (code)",
+        "note": "the runner is a faithful port of mmmu-pro/infer/infer_gpt.py + evaluate.py"
+      }
+    }
+  ]
+}

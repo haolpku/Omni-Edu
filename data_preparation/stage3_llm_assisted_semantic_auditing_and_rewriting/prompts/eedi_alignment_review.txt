@@ -1,0 +1,93 @@
+You are performing Stage A quality review for an officially annotated K-12
+mathematics question.
+
+Your task is NOT to generate a replacement label and NOT to write the final SFT
+answer. Evaluate only whether the visible question reasonably supports the
+supplied official Eedi taxonomy path, especially its most specific leaf.
+
+Official Eedi taxonomy path:
+{official_levels}
+
+Most specific official knowledge point:
+{leaf_name} (SubjectId {leaf_id})
+
+Evaluation principles:
+
+1. The supplied taxonomy path is a broad-to-specific classification hierarchy,
+   not a prerequisite sequence.
+2. Judge the underlying mathematical knowledge or skill needed to answer the
+   question, not only its surface context. A geometry, money, or real-world
+   setting may still test number, factors, fractions, algebra, or another
+   underlying skill.
+3. Do not require every word of the leaf label to appear literally in the
+   question. Decide whether the leaf is a reasonable curriculum category for
+   the core demand.
+4. Distinguish support for the broad ancestors from support for the most
+   specific leaf. A question can fit the broad topic while failing to justify
+   the leaf.
+5. Do not infer correctness merely because the label was supplied. Explicitly
+   identify both supporting and counter evidence.
+6. Do not solve the question, calculate its final result, prove the statement,
+   reveal the correct response, or identify/imply the correct option.
+7. Do not propose an alternative taxonomy label. If the supplied leaf is weak,
+   explain the mismatch in ordinary mathematical terms without naming a
+   replacement Eedi category.
+8. If the image is unreadable or essential content is missing, mark
+   image_readability accordingly and lower alignment confidence.
+
+alignment_confidence is an integer from 0 to 100. It measures how strongly the
+VISIBLE QUESTION supports the SUPPLIED MOST-SPECIFIC LEAF. It is not confidence
+in your own writing and not confidence in the broad subject.
+
+Use this scale:
+
+- 95-100: Direct and unambiguous match. The question's central mathematical
+  demand explicitly and primarily tests the supplied leaf. Little or no
+  plausible mismatch exists.
+- 85-94: Strong match. The question may use an applied or cross-topic context,
+  but answering it clearly depends on the supplied leaf as a central skill.
+- 70-84: Reasonable but not clean match. The leaf is defensible, although the
+  question also strongly relies on another skill, the leaf is somewhat broader
+  or narrower than the actual demand, or some interpretation is required.
+- 50-69: Weak leaf support. The broad ancestors are plausible, but the visible
+  question does not sufficiently support the supplied most-specific leaf.
+- 20-49: Poor match. Only a limited or incidental connection exists, and the
+  central mathematical demand is materially different from the supplied leaf.
+- 0-19: Clear mismatch, unusable image, or essential question content is
+  missing.
+
+The score should use the full range when appropriate. Do not cluster every
+answer around 80 or 90.
+
+Return exactly one JSON object with no Markdown:
+
+{
+  "image_readability": "clear | partially_readable | unreadable",
+  "alignment_confidence": 0,
+  "support_level": "direct | strong | reasonable | weak | poor | none",
+  "question_focus": "One concise sentence describing what the visible question asks, without solving it.",
+  "mathematical_demand": "One concise sentence describing the core mathematical knowledge or skill required.",
+  "supporting_evidence": [
+    "Specific visible evidence supporting the supplied leaf."
+  ],
+  "counter_evidence": [
+    "Specific evidence that weakens or limits support for the supplied leaf."
+  ],
+  "review_summary": "A concise explanation of why the score falls in its stated band.",
+  "issue": null
+}
+
+Rules for fields:
+
+- alignment_confidence must be an integer.
+- support_level must agree with the score:
+  - 95-100 direct
+  - 85-94 strong
+  - 70-84 reasonable
+  - 50-69 weak
+  - 20-49 poor
+  - 0-19 none
+- supporting_evidence and counter_evidence must always be JSON lists.
+- Use an empty list when no evidence of that type exists.
+- issue must be null for a clear, fully visible image. Otherwise briefly state
+  the readability or missing-content problem.

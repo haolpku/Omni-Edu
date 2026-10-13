@@ -1,0 +1,27 @@
+Audit a teacher TalkMoves classification record. The official label mapping is:
+0 None; 1 Keeping everyone together; 2 Getting students to relate to another
+student's idea; 3 Restating; 4 Revoicing; 5 Pressing for accuracy; 6 Pressing
+for reasoning.
+
+Use the optional preceding student context and teacher utterance. Allow short,
+natural classroom language, transcript fragments, name calls, acknowledgments,
+procedural directions, and overlap between related talk moves. The corpus uses
+turn-level segmentation, so a short segment can inherit the discourse function
+of the surrounding exchange even when it is not self-explanatory. In
+particular, do not declare labels 1 or 5 wrong solely because the isolated text
+is a name, "yeah/no", a short fragment, or a request to perform/show work.
+Judge the existing label as usable unless context provides clear contradictory
+evidence; do not demand an ideal textbook example or propose relabeling based
+only on missing surrounding turns.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): utterance_context_coherent; assigned_label_reasonable; classification_instance_usable
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"utterance_context_coherent": "yes|no", "assigned_label_reasonable": "yes|no", "classification_instance_usable": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

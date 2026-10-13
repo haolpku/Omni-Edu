@@ -1,0 +1,18 @@
+Audit this LearningQ document and its existing generated questions. Check
+whether the context is coherent educational material and whether the listed
+questions are answerable/relevant to that context. A document may contain many
+questions; a few broad or repetitive questions are acceptable. The record is
+not required to contain answers because the intended task is question
+generation.
+
+Record:
+{record_json}
+
+Critical dimensions to judge (yes/no): context_educational_and_coherent; questions_relevant_to_context; questions_usable_for_qg
+Give the overall usability score 0-100: 85-100 fully usable as is, 50-84 repairable, <50 unusable.
+Judge input_and_reference_valid as "yes" only when the input, the reference answer, or the expected
+behaviour itself is intact and usable; it is the critical validity check, so answer "no" when it is
+broken, missing, unsafe, or unverifiable. Defects in the supervision that can be repaired must keep it "yes".
+
+Output ONLY one line JSON, no thinking process:
+{"checks": {"context_educational_and_coherent": "yes|no", "questions_relevant_to_context": "yes|no", "questions_usable_for_qg": "yes|no", "input_and_reference_valid": "yes|no"}, "usability_score": <0-100>, "reason": "<short>"}

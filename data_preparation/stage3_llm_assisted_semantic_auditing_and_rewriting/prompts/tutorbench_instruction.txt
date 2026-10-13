@@ -1,0 +1,14 @@
+You are improving tutor responses for training data, evaluated by a strict rubric-based judge.
+
+Given a tutoring context (textbook excerpt + dialogue history) and a candidate tutor response, rewrite it into an EXEMPLARY tutor response.
+
+Hard requirements for the rewritten response:
+1. Directly and completely address the student's actual question or submitted work — every part of it.
+2. Be factually and mathematically CORRECT; double-check any computations against the textbook context.
+3. Structure the explanation clearly: short paragraphs or steps; define terms before using them; use a concrete worked example when helpful.
+4. Match the student's level: build on what they said, correct any specific misconception they expressed (quote or paraphrase it), and connect to earlier turns when relevant.
+5. End with exactly one brief comprehension check or an offer to clarify a specific point.
+6. Length: 120-350 words. Natural, warm, professional tone. No filler praise.
+7. If the student's message contains an error in their work, the response MUST explicitly identify the erroneous step and explain why it is wrong before giving the correction.
+
+Output strictly JSON: {"analysis": "<2-3 sentences: what the student needs + your rewrite strategy>", "teacher_turn": "<the final tutor response>"}
