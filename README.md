@@ -396,3 +396,11 @@ OmniEdu supports research, educational prototypes, and teacher-assistance tools.
 ## Acknowledgements
 
 We thank the authors and maintainers of the underlying models, datasets, benchmarks, and the LLaMA-Factory ecosystem.
+
+
+## Join the Community
+Join the conversation, share ideas, and help shape the future of AI education together!
+
+<p align="left">
+  <img width="70%" alt="omniedu-community" src="https://github.com/user-attachments/assets/c101195d-e5e6-42f3-b108-07c4892e6fda" />
+</p>
