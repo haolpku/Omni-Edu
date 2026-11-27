@@ -4,12 +4,14 @@
 
 **Curriculum-aware, multimodal models for the full K–12 learning–teaching loop.** OmniEdu brings together subject knowledge, curriculum alignment, learner diagnosis, and instructional support in three model scales: **4B, 9B, and 27B**, each available in **BF16 and FP8**.
 
-[📄 Paper (arXiv)](https://arxiv.org/abs/2609.23088) · [🌐 Project page](https://haolpku.github.io/Omni-Edu/) · [🤗 Models](#model-family) · [🤗 Dataset](https://huggingface.co/datasets/lhpku20010120/Omni-Edu) · [🛠️ Toolkit](#omniedu-toolkit)
+[📄 Paper (arXiv)](https://arxiv.org/abs/2609.23088) · [🌐 Project page](https://haolpku.github.io/Omni-Edu/) · [🤗 OmniEdu-Pro weights](https://huggingface.co/collections/lhpku20010120/omniedu-pro) · [🤗 All models](#model-family) · [🤗 Dataset](https://huggingface.co/datasets/lhpku20010120/Omni-Edu) · [🛠️ Toolkit](#omniedu-toolkit)
 
 Hao Liang · Qihan Lin · Meiyi Qiang · Linzhuang Sun · Hengyi Feng · Mingrui Chen · Sizhe Qiu · Wentao Zhang<br>
 Peking University · University of the Chinese Academy of Sciences · Zhongguancun Academy
 
-**October 2026:** FP8 checkpoints are available at all three scales, with **37%–44% smaller weight downloads** and per-benchmark BF16/FP8 comparisons. [Choose a checkpoint](#model-family) · [Compare FP8 results](#fp8-evaluation).
+**November 2026:** **OmniEdu-Pro** weights are available in **4B, 9B, and 27B**, with **BF16 and GGUF** downloads at every scale. [Hugging Face collection](https://huggingface.co/collections/lhpku20010120/omniedu-pro) · [Choose a Pro checkpoint](#omniedu-pro).
+
+**October 2026:** FP8 checkpoints are available at all three scales, with **37%–44% smaller weight downloads** and per-benchmark BF16/FP8 comparisons. [Choose a checkpoint](#original-omniedu) · [Compare FP8 results](#fp8-evaluation).
 
 **September 2026:** Paper, model weights, and training data are available. Original BF16 results follow [arXiv v1, submitted September 19, 2026](https://arxiv.org/abs/2609.23088v1).
 
@@ -27,6 +29,20 @@ An educational model needs to connect **what is being taught, what the learner u
 The training mixture contains **69,999 instruction examples** and **15.96M supervised response tokens**, drawn from more than 100 sources: **60,951 education-specific examples** and **9,048 general-purpose examples**, with task-specific system instructions. The models use full-parameter supervised fine-tuning with a **32,768-token training sequence length**.
 
 ## Model family
+
+### OmniEdu-Pro
+
+All Pro checkpoints are available in the [OmniEdu-Pro Hugging Face collection](https://huggingface.co/collections/lhpku20010120/omniedu-pro).
+
+| Model | BF16 weights | GGUF weights |
+| --- | --- | --- |
+| OmniEdu-Pro-4B | [Omni-Edu-Pro-4B](https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B) | [Omni-Edu-Pro-4B-GGUF](https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B-GGUF) |
+| OmniEdu-Pro-9B | [Omni-Edu-Pro-9B](https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B) | [Omni-Edu-Pro-9B-GGUF](https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B-GGUF) |
+| OmniEdu-Pro-27B | [Omni-Edu-Pro-27B](https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B) | [Omni-Edu-Pro-27B-GGUF](https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B-GGUF) |
+
+The BF16 repositories contain safetensors checkpoints. Open each GGUF repository to choose from its available files and quantization formats.
+
+### Original OmniEdu
 
 | Model | BF16 weights | FP8 weights | Smaller download | Backbone reported in the paper |
 | --- | --- | --- | ---: | --- |
@@ -208,6 +224,8 @@ Sources: [4B FP8 model card](https://huggingface.co/lhpku20010120/Omni-Edu-4B-FP
 ### 1. Run with Transformers
 
 For the original BF16 checkpoints, use a recent Transformers release with Qwen3.5 support and a GPU setup with sufficient memory for the chosen checkpoint. The example starts with 4B; change `MODEL_ID` for 9B or 27B.
+
+For **OmniEdu-Pro BF16**, set `MODEL_ID` to `lhpku20010120/Omni-Edu-Pro-4B`, `lhpku20010120/Omni-Edu-Pro-9B`, or `lhpku20010120/Omni-Edu-Pro-27B` in the example below.
 
 ```bash
 pip install -U torch torchvision transformers accelerate safetensors pillow

@@ -29,7 +29,7 @@
         <h1>Know the curriculum.<br><em>Teach the next step.</em></h1>
         <p class="lead">OmniEdu: Open Foundation Models for Learning and Teaching. Three multimodal model scales—4B, 9B, and 27B, now in BF16 and FP8—connect curriculum knowledge, problem solving, learner diagnosis, and instructional support.</p>
         <div class="actions">
-          <a class="button primary" href="#models">Get the models</a>
+          <a class="button primary" href="https://huggingface.co/collections/lhpku20010120/omniedu-pro">Get OmniEdu-Pro</a>
           <a class="button light" href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Get the dataset</a>
           <a class="button outline" href="https://arxiv.org/abs/2609.23088">Read the paper</a>
         </div>
@@ -57,7 +57,15 @@
     <section id="models" class="section wrap">
       <div class="section-kicker">01 / OPEN MODEL FAMILY</div>
       <h2>Choose your scale.<br>Start building.</h2>
-      <p class="section-intro">BF16 originals and FP8 releases at every scale. FP8 cuts weight downloads by 37%–44%. All three scales use a 32,768-token training sequence length.</p>
+      <p class="section-intro">OmniEdu-Pro is available in BF16 and GGUF at all three scales. The original OmniEdu BF16 and FP8 checkpoints are listed below.</p>
+      <p class="release-note"><strong>November 2026 · OmniEdu-Pro weights</strong> Download 4B, 9B, and 27B checkpoints from the <a href="https://huggingface.co/collections/lhpku20010120/omniedu-pro">Hugging Face collection ↗</a>.</p>
+      <h3 id="omniedu-pro">OmniEdu-Pro</h3>
+      <div class="model-grid">
+        <article class="model-card"><span class="model-scale">4B</span><h3>OmniEdu-Pro-4B</h3><p>4B Pro checkpoint in BF16 and GGUF.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B-GGUF">GGUF weights ↗</a></div></article>
+        <article class="model-card"><span class="model-scale">9B</span><h3>OmniEdu-Pro-9B</h3><p>9B Pro checkpoint in BF16 and GGUF.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B-GGUF">GGUF weights ↗</a></div></article>
+        <article class="model-card"><span class="model-scale">27B</span><h3>OmniEdu-Pro-27B</h3><p>27B Pro checkpoint in BF16 and GGUF.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B-GGUF">GGUF weights ↗</a></div></article>
+      </div>
+      <h3 id="original-omniedu">Original OmniEdu</h3>
       <p class="release-note"><strong>October 2026 · FP8 release</strong> Six checkpoints, with quantized results and deployment examples. <a href="#fp8-results">Compare BF16 and FP8 ↓</a></p>
       <div class="model-grid">
         <article class="model-card"><span class="model-scale">4B</span><h3>OmniEdu-4B</h3><p>Our smallest checkpoint for local experimentation.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-4B">BF16 · 8.46 GiB ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-4B-FP8">FP8 · 5.14 GiB ↗</a></div><span class="weight-saving">39% smaller weight download with FP8</span></article>
