@@ -1,0 +1,246 @@
+{
+  "source": "OmniEdu-Pro evaluation tables used in the September 22 composite-score figure.",
+  "units": "Percentage metrics are recorded on a 0–100 scale. LongTutor-T is the original 1–5 score.",
+  "models": [
+    {
+      "name": "Qwen3.5-4B-Base",
+      "group": "4B",
+      "kind": "backbone",
+      "metrics": {
+        "k12_bench_em": "42.72",
+        "k12_bench_f1": "69.20",
+        "mathfish_acc": "80.33",
+        "edumath_mac": "47.60",
+        "gaokao_bench_full": "88.89",
+        "exams_v": "44.69",
+        "mdk12_bench_full": "35.43",
+        "mathtutor_overall": "29.97",
+        "tutorbench": "45.52",
+        "longtutor_e": "25.67",
+        "longtutor_t": "1.60"
+      }
+    },
+    {
+      "name": "OmniEdu-4B",
+      "group": "4B",
+      "kind": "omniedu",
+      "metrics": {
+        "k12_bench_em": "54.25",
+        "k12_bench_f1": "71.75",
+        "mathfish_acc": "83.19",
+        "edumath_mac": "68.40",
+        "gaokao_bench_full": "90.46",
+        "exams_v": "57.62",
+        "mdk12_bench_full": "47.56",
+        "mathtutor_overall": "78.15",
+        "tutorbench": "46.67",
+        "longtutor_e": "65.88",
+        "longtutor_t": "2.29"
+      }
+    },
+    {
+      "name": "OmniEdu-Pro-4B",
+      "group": "4B",
+      "kind": "pro",
+      "metrics": {
+        "k12_bench_em": "60.26",
+        "k12_bench_f1": "73.28",
+        "mathfish_acc": "84.61",
+        "edumath_mac": "88.00",
+        "gaokao_bench_full": "90.87",
+        "exams_v": "61.63",
+        "mdk12_bench_full": "58.82",
+        "mathtutor_overall": "92.33",
+        "tutorbench": "51.07",
+        "longtutor_e": "67.45",
+        "longtutor_t": "2.34"
+      }
+    },
+    {
+      "name": "Qwen3.5-9B-Base",
+      "group": "9B",
+      "kind": "backbone",
+      "metrics": {
+        "k12_bench_em": "48.52",
+        "k12_bench_f1": "71.99",
+        "mathfish_acc": "79.66",
+        "edumath_mac": "58.60",
+        "gaokao_bench_full": "92.95",
+        "exams_v": "63.00",
+        "mdk12_bench_full": "44.50",
+        "mathtutor_overall": "34.82",
+        "tutorbench": "45.38",
+        "longtutor_e": "5.81",
+        "longtutor_t": "1.48"
+      }
+    },
+    {
+      "name": "OmniEdu-9B",
+      "group": "9B",
+      "kind": "omniedu",
+      "metrics": {
+        "k12_bench_em": "55.46",
+        "k12_bench_f1": "73.68",
+        "mathfish_acc": "83.70",
+        "edumath_mac": "74.00",
+        "gaokao_bench_full": "93.67",
+        "exams_v": "66.40",
+        "mdk12_bench_full": "50.80",
+        "mathtutor_overall": "77.57",
+        "tutorbench": "48.16",
+        "longtutor_e": "66.63",
+        "longtutor_t": "2.66"
+      }
+    },
+    {
+      "name": "OmniEdu-Pro-9B",
+      "group": "9B",
+      "kind": "pro",
+      "metrics": {
+        "k12_bench_em": "61.41",
+        "k12_bench_f1": "75.17",
+        "mathfish_acc": "84.20",
+        "edumath_mac": "92.39",
+        "gaokao_bench_full": "93.73",
+        "exams_v": "67.00",
+        "mdk12_bench_full": "62.07",
+        "mathtutor_overall": "91.01",
+        "tutorbench": "53.16",
+        "longtutor_e": "68.30",
+        "longtutor_t": "2.55"
+      }
+    },
+    {
+      "name": "Qwen3.8-27B",
+      "group": "27B",
+      "kind": "backbone",
+      "metrics": {
+        "k12_bench_em": "52.11",
+        "k12_bench_f1": "73.48",
+        "mathfish_acc": "83.54",
+        "edumath_mac": "70.60",
+        "gaokao_bench_full": "91.55",
+        "exams_v": "68.65",
+        "mdk12_bench_full": "46.04",
+        "mathtutor_overall": "65.72",
+        "tutorbench": "58.58",
+        "longtutor_e": "36.80",
+        "longtutor_t": "2.74"
+      }
+    },
+    {
+      "name": "OmniEdu-27B",
+      "group": "27B",
+      "kind": "omniedu",
+      "metrics": {
+        "k12_bench_em": "63.12",
+        "k12_bench_f1": "76.69",
+        "mathfish_acc": "85.89",
+        "edumath_mac": "86.95",
+        "gaokao_bench_full": "94.87",
+        "exams_v": "69.52",
+        "mdk12_bench_full": "57.76",
+        "mathtutor_overall": "80.10",
+        "tutorbench": "59.42",
+        "longtutor_e": "78.20",
+        "longtutor_t": "3.02"
+      }
+    },
+    {
+      "name": "OmniEdu-Pro-27B",
+      "group": "27B",
+      "kind": "pro",
+      "metrics": {
+        "k12_bench_em": "64.53",
+        "k12_bench_f1": "77.63",
+        "mathfish_acc": "86.60",
+        "edumath_mac": "93.50",
+        "gaokao_bench_full": "97.40",
+        "exams_v": "69.71",
+        "mdk12_bench_full": "67.76",
+        "mathtutor_overall": "92.76",
+        "tutorbench": "59.69",
+        "longtutor_e": "78.41",
+        "longtutor_t": "2.96"
+      }
+    },
+    {
+      "name": "GPT-6.1-Sol",
+      "group": "Frontier",
+      "kind": "frontier",
+      "metrics": {
+        "k12_bench_em": "54.63",
+        "k12_bench_f1": "75.76",
+        "mathfish_acc": "85.50",
+        "edumath_mac": "83.00",
+        "gaokao_bench_full": "98.45",
+        "exams_v": "75.18",
+        "mdk12_bench_full": "72.42",
+        "mathtutor_overall": "64.53",
+        "tutorbench": "57.89",
+        "longtutor_e": "78.81",
+        "longtutor_t": "1.99"
+      }
+    },
+    {
+      "name": "GPT-6.2-Astra",
+      "group": "Frontier",
+      "kind": "frontier",
+      "metrics": {
+        "k12_bench_em": "60.22",
+        "k12_bench_f1": "79.39",
+        "mathfish_acc": "84.60",
+        "edumath_mac": "100.00",
+        "gaokao_bench_full": "99.24",
+        "exams_v": "90.62",
+        "mdk12_bench_full": "74.86",
+        "mathtutor_overall": "59.31",
+        "tutorbench": "54.22",
+        "longtutor_e": "75.56",
+        "longtutor_t": "2.33"
+      }
+    },
+    {
+      "name": "Claude-Fable-5.2",
+      "group": "Frontier",
+      "kind": "frontier",
+      "metrics": {
+        "k12_bench_em": "52.52",
+        "k12_bench_f1": "68.10",
+        "mathfish_acc": "77.60",
+        "edumath_mac": "93.78",
+        "gaokao_bench_full": "98.72",
+        "exams_v": "91.14",
+        "mdk12_bench_full": "73.81",
+        "mathtutor_overall": "77.90",
+        "tutorbench": "53.74",
+        "longtutor_e": "77.57",
+        "longtutor_t": "2.40"
+      }
+    },
+    {
+      "name": "Kimi-K3.1-Pro",
+      "group": "Frontier",
+      "kind": "frontier",
+      "metrics": {
+        "k12_bench_em": "58.52",
+        "k12_bench_f1": "77.50",
+        "mathfish_acc": "86.20",
+        "edumath_mac": "80.00",
+        "gaokao_bench_full": "99.06",
+        "exams_v": "73.31",
+        "mdk12_bench_full": "73.04",
+        "mathtutor_overall": "62.92",
+        "tutorbench": "52.67",
+        "longtutor_e": "73.88",
+        "longtutor_t": "2.16"
+      }
+    }
+  ],
+  "evaluation_date": "2026-09-22",
+  "pro_model_cards": [
+    "https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B",
+    "https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B",
+    "https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B"
+  ]
+}

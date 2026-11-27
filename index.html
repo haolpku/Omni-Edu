@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OmniEdu · Open Foundation Models for Learning and Teaching</title>
-  <meta name="description" content="OmniEdu is an open family of foundation models for K–12 learning and teaching, with curriculum grounding, problem solving, diagnosis, and pedagogical tutoring.">
-  <meta property="og:title" content="OmniEdu · Open Foundation Models for Learning and Teaching">
-  <meta property="og:description" content="An open education model family spanning curriculum grounding, K–12 problem solving, and pedagogical tutoring.">
+  <title>OmniEdu-Pro · From Solver to Tutor</title>
+  <meta name="description" content="Meet OmniEdu-Pro: open multimodal education models in 4B, 9B, and 27B. Explore curriculum, problem-solving, and tutoring results, and download BF16 or GGUF weights.">
+  <meta property="og:title" content="OmniEdu-Pro · From Solver to Tutor">
+  <meta property="og:description" content="Open education models for understanding the curriculum, finding learning gaps, and guiding the next step. BF16 and GGUF weights available.">
   <meta name="theme-color" content="#10152d">
   <link rel="canonical" href="https://haolpku.github.io/Omni-Edu/">
   <link rel="stylesheet" href="style.css">
@@ -14,7 +14,7 @@
 <body>
   <header class="hero">
     <nav class="nav wrap">
-      <a class="brand" href="./">Omni<span>Edu</span></a>
+      <a class="brand" href="./">Omni<span>Edu</span><span class="brand-pro">PRO</span></a>
       <div class="nav-links">
         <a href="#models">Models</a>
         <a href="#capabilities">Capabilities</a>
@@ -25,47 +25,140 @@
     </nav>
     <div class="hero-grid wrap">
       <div>
-        <div class="eyebrow">ARXIV 2609.23088 · SEPTEMBER 2026</div>
-        <h1>Know the curriculum.<br><em>Teach the next step.</em></h1>
-        <p class="lead">OmniEdu: Open Foundation Models for Learning and Teaching. Three multimodal model scales—4B, 9B, and 27B, now in BF16 and FP8—connect curriculum knowledge, problem solving, learner diagnosis, and instructional support.</p>
+        <div class="eyebrow">OPEN EDUCATION MODELS · NOVEMBER 2026</div>
+        <h1>OmniEdu<span class="hero-pro">-Pro</span><br><em>From Solver<br>to Tutor.</em></h1>
+        <p class="lead">Open multimodal models for K–12 learning and teaching. Understand the curriculum, work through a problem, and help a learner take the next step.</p><p class="hero-meta">4B / 9B / 27B <span>·</span> BF16 &amp; GGUF <span>·</span> Apache 2.0</p>
         <div class="actions">
           <a class="button primary" href="https://huggingface.co/collections/lhpku20010120/omniedu-pro">Get OmniEdu-Pro</a>
-          <a class="button light" href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Get the dataset</a>
-          <a class="button outline" href="https://arxiv.org/abs/2609.23088">Read the paper</a>
+          <a class="button light" href="#results">Explore the results ↓</a>
+          <a class="button outline" href="https://arxiv.org/abs/2609.23088">OmniEdu paper ↗</a>
         </div>
         <p class="authors"><span class="author">Hao Liang</span> · <span class="author">Qihan Lin</span> · <span class="author">Meiyi Qiang</span> · <span class="author">Linzhuang Sun</span> · <span class="author">Hengyi Feng</span> · <span class="author">Mingrui Chen</span> · <span class="author">Sizhe Qiu</span> · <span class="author">Wentao Zhang</span><br><span>Peking University · University of the Chinese Academy of Sciences · Zhongguancun Academy</span></p>
       </div>
-      <div class="hero-card">
-        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-        <div class="hero-card-inner">
-          <div class="small-label">THE EDUCATIONAL LOOP</div>
-          <div class="loop"><span>Ground</span><b>→</b><span>Solve</span><b>→</b><span>Diagnose</span><b>→</b><span>Tutor</span></div>
-          <div class="loop-note">From “what is the answer?” to “what should this learner do next?”</div>
-        </div>
+      <div class="hero-card pro-highlight">
+        <div class="highlight-top"><span>THE TEACHING BENCHMARKS</span><a href="#results">See the comparison ↗</a></div>
+        <p class="highlight-title">OmniEdu-Pro-27B</p>
+        <div class="highlight-score">72.05<span>/ 100</span></div>
+        <p class="highlight-caption">Pedagogical tutoring composite score</p>
+        <div class="hero-score-row"><div><span>OmniEdu-Pro-27B</span><b>72.05</b></div><div class="hero-score-track"><span style="width:72.05%"></span></div></div>
+        <div class="hero-score-row frontier"><div><span>Claude-Fable-5.2</span><b>62.64</b></div><div class="hero-score-track"><span style="width:62.64%"></span></div></div>
+        <p class="hero-delta"><strong>+9.41 points</strong> over the highest-scoring frontier model in this tutoring comparison.</p>
+        <div class="hero-result-link">All three Pro sizes lead the four frontier models in tutoring.</div>
       </div>
     </div>
   </header>
 
   <main>
     <section class="stats wrap">
-      <div><strong>69,999</strong><span>instruction examples</span></div>
-      <div><strong>15.96M</strong><span>supervised response tokens</span></div>
-      <div><strong>3</strong><span>open model scales</span></div>
-      <div><strong>20</strong><span>task-specific system instructions</span></div>
+      <div><strong>4B / 9B / 27B</strong><span>three model scales</span></div>
+      <div><strong>3</strong><span>evaluated capability areas</span></div>
+      <div><strong>9</strong><span>education benchmarks</span></div>
+      <div><strong>BF16 + GGUF</strong><span>downloadable weights</span></div>
+    </section>
+
+    <section id="results" class="section tinted pro-results">
+      <div class="wrap">
+        <div class="section-kicker">01 / OMNIEDU-PRO RESULTS</div>
+        <div class="results-head"><h2>Ahead in tutoring.<br>Compare every capability.</h2><p>All three OmniEdu-Pro sizes score above GPT-6.1-Sol, GPT-6.2-Astra, Claude-Fable-5.2, and Kimi-K3.1-Pro in pedagogical tutoring.</p></div>
+        <div class="comparison-meta"><span>September 22, 2026 evaluation · composite scores out of 100</span><div class="chart-legend"><span><i class="legend-pro"></i>OmniEdu-Pro</span><span><i class="legend-frontier"></i>Frontier models</span></div></div>
+<!-- PRO_RESULTS_START -->
+<div class="score-charts">
+<article class="score-chart" aria-labelledby="chart-curriculum"><h3 id="chart-curriculum">Curriculum grounding</h3><p>Connect questions to the curriculum.</p>
+<ol class="score-list">
+<li class="score-row frontier"><div class="score-label"><span>GPT-6.2-Astra</span><strong>84.80</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:84.80%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-27B</span><strong>83.73</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:83.73%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-9B</span><strong>81.63</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:81.63%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-4B</span><strong>79.79</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:79.79%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>Kimi-K3.1-Pro</span><strong>78.07</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:78.07%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>GPT-6.1-Sol</span><strong>77.90</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:77.90%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>Claude-Fable-5.2</span><strong>77.23</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:77.23%"></div></div></li>
+</ol><div class="score-axis" aria-hidden="true"><span>0</span><span>50</span><span>100</span></div>
+<p class="score-comparison"><b>27B-Pro 83.73</b> · GPT-6.2-Astra 84.80<br><span>−1.07 points vs. the highest frontier score in this category</span></p></article>
+<article class="score-chart" aria-labelledby="chart-solving"><h3 id="chart-solving">K–12 problem solving</h3><p>Solve school problems across subjects.</p>
+<ol class="score-list">
+<li class="score-row frontier"><div class="score-label"><span>GPT-6.2-Astra</span><strong>88.24</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:88.24%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>Claude-Fable-5.2</span><strong>87.89</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:87.89%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>GPT-6.1-Sol</span><strong>82.02</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:82.02%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>Kimi-K3.1-Pro</span><strong>81.80</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:81.80%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-27B</span><strong>78.29</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:78.29%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-9B</span><strong>74.27</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:74.27%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-4B</span><strong>70.44</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:70.44%"></div></div></li>
+</ol><div class="score-axis" aria-hidden="true"><span>0</span><span>50</span><span>100</span></div>
+<p class="score-comparison"><b>27B-Pro 78.29</b> · GPT-6.2-Astra 88.24<br><span>−9.95 points vs. the highest frontier score in this category</span></p></article>
+<article class="score-chart" aria-labelledby="chart-tutoring"><h3 id="chart-tutoring">Pedagogical tutoring</h3><p>Diagnose gaps and guide the next step.</p>
+<ol class="score-list">
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-27B</span><strong>72.05</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:72.05%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-9B</span><strong>65.90</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:65.90%"></div></div></li>
+<li class="score-row pro"><div class="score-label"><span>OmniEdu-Pro-4B</span><strong>64.63</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:64.63%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>Claude-Fable-5.2</span><strong>62.64</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:62.64%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>GPT-6.1-Sol</span><strong>58.07</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:58.07%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>GPT-6.2-Astra</span><strong>55.98</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:55.98%"></div></div></li>
+<li class="score-row frontier"><div class="score-label"><span>Kimi-K3.1-Pro</span><strong>55.68</strong></div><div class="score-track" aria-hidden="true"><div class="score-fill" style="width:55.68%"></div></div></li>
+</ol><div class="score-axis" aria-hidden="true"><span>0</span><span>50</span><span>100</span></div>
+<p class="score-comparison"><b>27B-Pro 72.05</b> · Claude-Fable-5.2 62.64<br><span>+9.41 points vs. the highest frontier score in this category</span></p></article>
+</div>
+<details class="benchmark"><summary>Full comparison<span>13 models · scores out of 100</span></summary><div class="table-scroll" role="region" aria-label="OmniEdu-Pro full composite scores" tabindex="0"><table id="pro-score-table"><caption>September 22, 2026 · MathTutorBench included</caption><thead><tr><th scope="col">Model</th>
+<th scope="col">Curriculum grounding</th>
+<th scope="col">K–12 problem solving</th>
+<th scope="col">Pedagogical tutoring</th>
+</tr></thead><tbody>
+<tr><th scope="row">Qwen3.5-4B-Base</th><td>61.30</td><td>56.34</td><td>31.94</td></tr>
+<tr><th scope="row">OmniEdu-4B</th><td>71.53</td><td>65.21</td><td>57.96</td></tr>
+<tr class="ours"><th scope="row">OmniEdu-Pro-4B</th><td>79.79</td><td>70.44</td><td>64.63</td></tr>
+<tr><th scope="row">Qwen3.5-9B-Base</th><td>66.17</td><td>66.82</td><td>29.70</td></tr>
+<tr><th scope="row">OmniEdu-9B</th><td>74.09</td><td>70.29</td><td>59.93</td></tr>
+<tr class="ours"><th scope="row">OmniEdu-Pro-9B</th><td>81.63</td><td>74.27</td><td>65.90</td></tr>
+<tr><th scope="row">Qwen3.8-27B</th><td>72.31</td><td>68.75</td><td>54.82</td></tr>
+<tr><th scope="row">OmniEdu-27B</th><td>80.92</td><td>74.05</td><td>67.96</td></tr>
+<tr class="ours"><th scope="row">OmniEdu-Pro-27B</th><td>83.73</td><td>78.29</td><td>72.05</td></tr>
+<tr><th scope="row">GPT-6.1-Sol</th><td>77.90</td><td>82.02</td><td>58.07</td></tr>
+<tr><th scope="row">GPT-6.2-Astra</th><td>84.80</td><td>88.24</td><td>55.98</td></tr>
+<tr><th scope="row">Claude-Fable-5.2</th><td>77.23</td><td>87.89</td><td>62.64</td></tr>
+<tr><th scope="row">Kimi-K3.1-Pro</th><td>78.07</td><td>81.80</td><td>55.68</td></tr>
+</tbody></table></div></details>
+<details class="benchmark scoring" id="scoring"><summary>How the three scores are calculated<span>Benchmark-level equal weights</span></summary><div class="formula-list">
+<div><h4>Curriculum grounding</h4><code>[(K12-Bench EM + K12-Bench F1) / 2 + MathFish Acc. + EDUMATH MaC] / 3</code></div>
+<div><h4>K–12 problem solving</h4><code>(GAOKAO-Bench Full + EXAMS-V + MDK12-Bench Full) / 3</code></div>
+<div><h4>Pedagogical tutoring</h4><code>[MathTutor Overall + TutorBench + (LongTutor-E + 25 × (LongTutor-T − 1)) / 2] / 3</code></div>
+<p>Each category averages three benchmarks equally. K12-Bench EM and F1 share one benchmark weight. MathTutorBench uses Overall. LongTutor combines Evidence with Teaching; Teaching is mapped from 1–5 to 0–100 using 25 × (T − 1). Scores are rounded only for display.</p></div></details>
+<div class="data-links"><a href="data/omniedu-pro-scores.csv" download>Download scores · CSV ↓</a><a href="data/omniedu-pro-benchmarks.json" download>Raw benchmark metrics · JSON ↓</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B#evaluation">Pro model card ↗</a></div>
+<!-- PRO_RESULTS_END -->
+      </div>
+    </section>
+
+    <section id="capabilities" class="section wrap">
+      <div class="section-kicker">02 / FROM SOLVER TO TUTOR</div>
+      <h2>Help with the step<br>where a learner gets stuck.</h2>
+      <p class="section-intro">Start with a question and the student's work so far, in text or an image. The goal is to locate the likely gap and offer a hint that helps the student continue.</p>
+      <div class="teaching-example" aria-labelledby="example-title">
+        <div class="example-header"><h3 id="example-title">A half-finished solution</h3><span>Illustrative tutoring scenario</span></div>
+        <div class="teaching-steps">
+          <article><span class="step-label">01 / STUDENT'S WORK</span><p class="equation">2(x + 3) = 10<br>2x + 3 = 10</p><p>“I'm stuck. What should I do next?”</p></article>
+          <article><span class="step-label">02 / FIND THE GAP</span><h4>Check the expansion.</h4><p>The 2 was multiplied by x, but not by 3. The likely gap is the distributive property.</p></article>
+          <article class="hint-step"><span class="step-label">03 / GIVE A HINT</span><blockquote>“Let's look at the brackets. Besides x, what else needs to be multiplied by 2?”</blockquote><p>Use the student's reply to choose the next prompt.</p></article>
+        </div>
+      </div>
+      <div class="cap-grid">
+        <article><div class="cap-num">01</div><h3>Understand the curriculum</h3><p>Connect questions with knowledge points, grade levels, and prerequisites.</p></article>
+        <article><div class="cap-num">02</div><h3>Work through problems</h3><p>Reason about school-level questions across subjects, using text and images.</p></article>
+        <article><div class="cap-num">03</div><h3>Find the learning gap</h3><p>Inspect the student's steps for mistakes and missing concepts.</p></article>
+        <article><div class="cap-num">04</div><h3>Guide the next step</h3><p>Offer a focused hint, question, or explanation, then follow the student's response.</p></article>
+      </div>
     </section>
 
     <section id="models" class="section wrap">
-      <div class="section-kicker">01 / OPEN MODEL FAMILY</div>
+      <div class="section-kicker">03 / OPEN MODEL FAMILY</div>
       <h2>Choose your scale.<br>Start building.</h2>
-      <p class="section-intro">OmniEdu-Pro is available in BF16 and GGUF at all three scales. The original OmniEdu BF16 and FP8 checkpoints are listed below.</p>
+      <p class="section-intro">Three sizes, with BF16 and GGUF weights at every scale. OmniEdu-Pro builds on OmniEdu through PPO reinforcement learning.</p>
       <p class="release-note"><strong>November 2026 · OmniEdu-Pro weights</strong> Download 4B, 9B, and 27B checkpoints from the <a href="https://huggingface.co/collections/lhpku20010120/omniedu-pro">Hugging Face collection ↗</a>.</p>
       <h3 id="omniedu-pro">OmniEdu-Pro</h3>
       <div class="model-grid">
-        <article class="model-card"><span class="model-scale">4B</span><h3>OmniEdu-Pro-4B</h3><p>4B Pro checkpoint in BF16 and GGUF.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B-GGUF">GGUF weights ↗</a></div></article>
-        <article class="model-card"><span class="model-scale">9B</span><h3>OmniEdu-Pro-9B</h3><p>9B Pro checkpoint in BF16 and GGUF.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B-GGUF">GGUF weights ↗</a></div></article>
-        <article class="model-card"><span class="model-scale">27B</span><h3>OmniEdu-Pro-27B</h3><p>27B Pro checkpoint in BF16 and GGUF.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B-GGUF">GGUF weights ↗</a></div></article>
+        <article class="model-card"><span class="model-scale">4B</span><h3>OmniEdu-Pro-4B</h3><p>Our smallest Pro model for local experimentation.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-4B-GGUF">GGUF weights ↗</a></div></article>
+        <article class="model-card"><span class="model-scale">9B</span><h3>OmniEdu-Pro-9B</h3><p>The middle scale in the Pro family.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-9B-GGUF">GGUF weights ↗</a></div></article>
+        <article class="model-card"><span class="model-scale">27B</span><h3>OmniEdu-Pro-27B</h3><p>The highest-scoring Pro model across all three evaluation categories.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B">BF16 weights ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-Pro-27B-GGUF">GGUF weights ↗</a></div></article>
       </div>
-      <h3 id="original-omniedu">Original OmniEdu</h3>
+      <div class="data-links"><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu-Pro">OmniEdu-Pro training data ↗</a><a href="https://github.com/haolpku/Omni-Edu">Code &amp; evaluation toolkit ↗</a></div>
+      <details id="original-omniedu" class="benchmark original-models"><summary>Original OmniEdu weights<span>BF16 &amp; FP8</span></summary><div class="original-model-content">
       <p class="release-note"><strong>October 2026 · FP8 release</strong> Six checkpoints, with quantized results and deployment examples. <a href="#fp8-results">Compare BF16 and FP8 ↓</a></p>
       <div class="model-grid">
         <article class="model-card"><span class="model-scale">4B</span><h3>OmniEdu-4B</h3><p>Our smallest checkpoint for local experimentation.</p><div class="model-downloads"><a href="https://huggingface.co/lhpku20010120/Omni-Edu-4B">BF16 · 8.46 GiB ↗</a><a href="https://huggingface.co/lhpku20010120/Omni-Edu-4B-FP8">FP8 · 5.14 GiB ↗</a></div><span class="weight-saving">39% smaller weight download with FP8</span></article>
@@ -74,22 +167,30 @@
       </div>
       <p class="data-note">Sizes are summed safetensors downloads, checked October 7, 2026. Runtime GPU memory also includes caches, activations, and serving overhead. FP8 preserves the vision tower, linear-attention gating projections, and output head in their original precision.</p>
       <p class="data-note">Trained on <b>60,951 education-specific</b> and <b>9,048 general-purpose</b> examples from more than 100 sources. <a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Explore the dataset ↗</a></p>
+      </div></details>
     </section>
 
-    <section id="capabilities" class="section wrap">
-      <div class="section-kicker">02 / CAPABILITIES</div>
-      <h2>One family for the full learning–teaching loop.</h2>
-      <div class="cap-grid">
-        <article><div class="cap-num">01</div><h3>Curriculum grounding</h3><p>Map a question to knowledge points, grade levels, prerequisite relations, and curriculum evidence.</p></article>
-        <article><div class="cap-num">02</div><h3>K–12 problem solving</h3><p>Solve authentic school-level questions across subjects, formats, and multimodal inputs.</p></article>
-        <article><div class="cap-num">03</div><h3>Diagnostic reasoning</h3><p>Identify misconceptions, missing prerequisites, and knowledge-state gaps from learner work.</p></article>
-        <article><div class="cap-num">04</div><h3>Pedagogical tutoring</h3><p>Choose the next instructional action: a hint, question, prerequisite review, or explanation.</p></article>
+    <section id="deploy" class="section wrap">
+      <div class="section-kicker">04 / DEPLOYMENT</div>
+      <div class="deploy-grid">
+        <div><h2>Bring OmniEdu-Pro<br>to your application.</h2><p>Start with the 4B BF16 checkpoint using a recent vLLM release with Qwen3.5 support. Serve text and image conversations through an OpenAI-compatible API.</p><p>For 9B or 27B, change the model ID and adjust GPU parallelism. Choose context length to fit your hardware and keep thinking disabled to match the model's chat template.</p><p>For GGUF, choose an available file from the model repository and follow its model-card instructions.</p></div>
+        <pre><code>pip install -U vllm
+
+vllm serve lhpku20010120/Omni-Edu-Pro-4B \
+  --served-model-name omniedu \
+  --dtype bfloat16 \
+  --tensor-parallel-size 1 \
+  --max-model-len 32768 \
+  --reasoning-parser qwen3 \
+  --default-chat-template-kwargs &#x27;{&quot;enable_thinking&quot;: false}&#x27;</code></pre>
       </div>
+      <div class="deploy-links"><a href="https://github.com/haolpku/Omni-Edu#quick-start">Transformers &amp; API examples ↗</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu-Pro">Explore the Pro training data ↗</a><a href="https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html">vLLM setup guide ↗</a></div>
     </section>
 
-    <section id="results" class="section tinted">
+    <details id="original-results" class="release-archive wrap"><summary>Original OmniEdu · paper and FP8 results</summary>
+    <section class="archive-content">
       <div class="wrap">
-        <div class="section-kicker">03 / EVALUATION</div>
+        <div class="section-kicker">ORIGINAL OMNIEDU · PAPER &amp; FP8 RESULTS</div>
         <div class="results-head"><h2>Leading curriculum grounding.<br>Stronger instructional support.</h2><p>Among the 16 models evaluated in the paper, OmniEdu-27B leads K12-Bench EM/F1, MathFish accuracy, and LongTutor's teaching score. Explore the full comparison with open-weight and proprietary models below.</p></div>
         <div class="result-grid">
           <div class="result-card"><span>K12-Bench · OmniEdu-27B</span><strong>63.12% EM</strong><small>76.69% F1 · best on both metrics</small></div>
@@ -467,26 +568,11 @@
       </div>
     </section>
 
-    <section id="deploy" class="section wrap">
-      <div class="section-kicker">04 / DEPLOYMENT</div>
-      <div class="deploy-grid">
-        <div><h2>From checkpoint<br>to your application.</h2><p>Start with OmniEdu-4B-FP8 on a GPU/backend supporting block-wise FP8, using a recent vLLM release with Qwen3.5 support. The checkpoint carries its quantization configuration; thinking is disabled to match training.</p><p>For 9B or 27B, change the model ID and adjust GPU parallelism. To serve the BF16 original, remove the -FP8 suffix. Memory needs depend on context length, concurrency, and image inputs.</p></div>
-        <pre><code>pip install -U vllm
-
-vllm serve lhpku20010120/Omni-Edu-4B-FP8 \
-  --served-model-name omniedu \
-  --dtype bfloat16 \
-  --tensor-parallel-size 1 \
-  --max-model-len 32768 \
-  --reasoning-parser qwen3 \
-  --default-chat-template-kwargs &#x27;{&quot;enable_thinking&quot;: false}&#x27;</code></pre>
-      </div>
-      <div class="deploy-links"><a href="https://github.com/haolpku/Omni-Edu#quick-start">Transformers &amp; API examples ↗</a><a href="https://github.com/haolpku/Omni-Edu#dataset">Load the training data ↗</a><a href="https://docs.vllm.ai/projects/recipes/en/latest/Qwen/Qwen3.5.html">vLLM setup guide ↗</a></div>
-    </section>
+    </details>
 
     <section id="citation" class="section tinted compact">
       <div class="wrap">
-        <div class="section-kicker">05 / THE PAPER</div>
+        <div class="section-kicker">05 / THE OMNIEDU PAPER</div>
         <h2>OmniEdu: Open Foundation Models<br>for Learning and Teaching</h2>
         <p class="section-intro">Hao Liang · Qihan Lin · Meiyi Qiang · Linzhuang Sun · Hengyi Feng · Mingrui Chen · Sizhe Qiu · Wentao Zhang<br>arXiv:2609.23088 · September 19, 2026</p>
         <div class="paper-links"><a href="https://arxiv.org/abs/2609.23088">Read on arXiv ↗</a><a href="https://arxiv.org/pdf/2609.23088">Download PDF ↗</a></div>
@@ -507,6 +593,6 @@ vllm serve lhpku20010120/Omni-Edu-4B-FP8 \
       <div class="wrap quote"><div class="quote-mark">“</div><p>An educational model must coordinate <b>what to teach</b>, <b>where the learner is</b>, and <b>how to respond</b>.</p><span>— OmniEdu design principle</span></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><div><strong>OmniEdu</strong><span>Open Foundation Models for Learning and Teaching</span></div><div class="footer-links"><a href="https://github.com/haolpku/Omni-Edu">GitHub</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu">Dataset</a><a href="https://arxiv.org/abs/2609.23088">Paper</a></div></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><div><strong>OmniEdu-Pro</strong><span>Open Foundation Models for Learning and Teaching</span></div><div class="footer-links"><a href="https://github.com/haolpku/Omni-Edu">GitHub</a><a href="https://huggingface.co/collections/lhpku20010120/omniedu-pro">Models</a><a href="https://huggingface.co/datasets/lhpku20010120/Omni-Edu-Pro">Dataset</a><a href="https://arxiv.org/abs/2609.23088">Paper</a></div></div></footer>
 </body>
 </html>

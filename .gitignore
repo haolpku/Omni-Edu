@@ -56,6 +56,9 @@ dist/
 # ...except the example batch input that ships with the toolkit
 !sdk/examples/*.jsonl
 
+# Public benchmark summary downloaded from the project website
+!data/omniedu-pro-scores.csv
+
 # logs
 *.log
 logs/

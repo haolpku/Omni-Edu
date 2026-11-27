@@ -42,6 +42,8 @@ All Pro checkpoints are available in the [OmniEdu-Pro Hugging Face collection](h
 
 The BF16 repositories contain safetensors checkpoints. Open each GGUF repository to choose from its available files and quantization formats.
 
+The [project page](https://haolpku.github.io/Omni-Edu/#results) reports the September 22 Pro comparison across curriculum grounding, K–12 problem solving, and pedagogical tutoring. [Raw metrics](data/omniedu-pro-benchmarks.json) and [composite scores](data/omniedu-pro-scores.csv) are included in this repository. To regenerate the website charts, full comparison table, scoring formulas, and CSV from the raw metrics, run `python3 scripts/update_pro_results.py` (Python standard library only).
+
 ### Original OmniEdu
 
 | Model | BF16 weights | FP8 weights | Smaller download | Backbone reported in the paper |

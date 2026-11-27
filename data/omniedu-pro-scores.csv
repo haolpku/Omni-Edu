@@ -1,0 +1,14 @@
+Model,Curriculum grounding,K–12 problem solving,Pedagogical tutoring
+Qwen3.5-4B-Base,61.30,56.34,31.94
+OmniEdu-4B,71.53,65.21,57.96
+OmniEdu-Pro-4B,79.79,70.44,64.63
+Qwen3.5-9B-Base,66.17,66.82,29.70
+OmniEdu-9B,74.09,70.29,59.93
+OmniEdu-Pro-9B,81.63,74.27,65.90
+Qwen3.8-27B,72.31,68.75,54.82
+OmniEdu-27B,80.92,74.05,67.96
+OmniEdu-Pro-27B,83.73,78.29,72.05
+GPT-6.1-Sol,77.90,82.02,58.07
+GPT-6.2-Astra,84.80,88.24,55.98
+Claude-Fable-5.2,77.23,87.89,62.64
+Kimi-K3.1-Pro,78.07,81.80,55.68
